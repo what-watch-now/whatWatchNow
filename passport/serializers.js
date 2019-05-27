@@ -1,5 +1,5 @@
-const passport = require('passport');
-const User = require('../models/User.model');
+const passport = require("passport");
+const User = require("../models/User.model");
 
 passport.serializeUser((loggedInUser, cb) => {
   cb(null, loggedInUser._id);
@@ -12,5 +12,5 @@ passport.deserializeUser((userIdFromSession, cb) => {
     })
     .catch(err => {
       cb(err);
-    })
+    });
 });
