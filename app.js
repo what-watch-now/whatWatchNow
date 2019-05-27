@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const express = require("express");
 const favicon = require("serve-favicon");
 const hbs = require("hbs");
-require("./config/mongoose.config");
+const mongoose = require("./config/mongoose.config");
 const logger = require("morgan");
 const path = require("path");
 const session = require("express-session");
