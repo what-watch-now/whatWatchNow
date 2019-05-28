@@ -26,9 +26,21 @@
         <option value="N/A">New</option>
     </select>
 </form>
+<div id="movies-card">
 
+    {{#each movies}}
 
-{{!-- <form action="/" method="POST">
-    <input type="text" placeholder="Search by Name.." name="search">
-    <button type="submit">search</button>
-</form> --}}
+    <a href="">
+        <div class="movies-image">
+            <img src="{{this.image}}" alt="{{this.title}} poster">
+        </div>
+        <h3>Title</h3>
+        <p>{{this.title}}</p>
+        <h4>Rating</h4>
+        <p>{{this.imdbrating}}</p>
+        <h4>Sinopsis</h4>
+        <p>{{this.synopsis}}</p>
+    </a>
+    {{/each}}
+
+</div>
