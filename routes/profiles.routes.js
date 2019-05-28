@@ -26,7 +26,7 @@ router.get('/user', ensureAuthenticated, (req, res, next) => {
   res.render('profiles/user');
 });
 
-router.get('/admin', ensureAuthenticated, checkAdmin, (req, res, next) => {
+router.get('/admin', [ensureAuthenticated, checkAdmin], (req, res, next) => {
   res.render('profiles/admin');
 });
 

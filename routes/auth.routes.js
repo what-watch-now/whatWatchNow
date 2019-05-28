@@ -7,6 +7,7 @@ const User = require("../models/User.model");
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
+// Login
 router.get("/login", (req, res, next) => {
   res.render("auth/login", { message: req.flash("error") });
 });
@@ -21,43 +22,34 @@ router.post(
   })
 );
 
+// Signup
 router.get("/signup", (req, res, next) => {
   res.render("auth/signup");
 });
 
 router.post("/signup", (req, res, next) => {
-  const username = req.body.username;
-  const password = req.body.password;
-  if (username === "" || password === "") {
-    res.render("auth/signup", { message: "Indicate username and password" });
-    return;
-  }
-
-  User.findOne({ username }, "username", (err, user) => {
-    if (user !== null) {
-      res.render("auth/signup", { message: "The username already exists" });
+  passport.authenticate("local-signup", (err, user, msg) => {
+    if (err) {
+      next(err);
+      return
+    }
+    if (!user) {
+      req.flash("error", msg.message);
+      res.redirect("/auth/signup");
+      //res.render("auth/signup", {message: msg.message});
       return;
     }
-
-    const salt = bcrypt.genSaltSync(bcryptSalt);
-    const hashPass = bcrypt.hashSync(password, salt);
-
-    const newUser = new User({
-      username,
-      password: hashPass
-    });
-
-    newUser
-      .save()
-      .then(() => {
+    req.login(user, (err) => {
+      if (err) {
+        next(err)
+      } else {
         res.redirect("/");
-      })
-      .catch(err => {
-        res.render("auth/signup", { message: "Something went wrong" });
-      });
-  });
+      }
+    })
+  })(req, res, next);
 });
 
+// Logout
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
