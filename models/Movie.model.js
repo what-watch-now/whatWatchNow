@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const netflixSchema = new Schema({
+const movieSchema = new Schema({
   netflixid: String,
   title: String,
   image: String,
@@ -14,7 +14,8 @@ const netflixSchema = new Schema({
   unogsdate: String,
   imdbid: String,
   download: String,
-  imdbrating: String
+  imdbrating: String,
+  genre: String
 });
-const Netflix = mongoose.model("Netflix", netflixSchema);
-module.exports = Netflix;
+const Movie = mongoose.model("Movie", movieSchema);
+module.exports = Movie;

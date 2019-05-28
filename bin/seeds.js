@@ -21,7 +21,7 @@ mongoose
 let users = [
   {
     username: "alice",
-    password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
+    password: bcusersrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
   },
   {
     username: "bob",
@@ -52,14 +52,15 @@ User.deleteMany()
 
 // Movies
 
-const Netflix = require('../models/Netflix.model')
+const Movie = require('../models/Movie.model')
 
 const ApiHandler = require('./handler')
 const unogsApi = new ApiHandler('https://unogs-unogs-v1.p.rapidapi.com/aaapi.cgi')
 const SpainCode = 270
 const typeMedia = 'movie'
-let indexFilm = 0
+let indexFilmPerPage = 0
 let currentPage = 1
+let indexFilm = 0
 
 unogsApi.getFilms(SpainCode, typeMedia, currentPage)
   .then(spanishMovies => createFilms(spanishMovies))
@@ -68,44 +69,66 @@ unogsApi.getFilms(SpainCode, typeMedia, currentPage)
 
 const createFilms = spanishMovies => {
   // const numberMovies = spanishMovies.length
-  const numberMovies = 5
+  const numberMovies = 20
 
-  // const currentFilm = spanishMovies.type[indexFilm]
-  const currentFilm = spanishMovies[indexFilm]
-  // console.log(indexFilm)
+  // const currentFilm = spanishMovies.type[indexFilmPerPage]
+  const currentFilm = spanishMovies[indexFilmPerPage]
+  // console.log(indexFilmPerPage)
   // console.log(currentFilm)
   if (currentFilm.type === 'movie' && typeof currentFilm.imdbid) {
     // console.log(currentFilm, '---------------')
     unogsApi.getImdbInfo(currentFilm.imdbid)
       .then(imdbInfo => {
-        // console.log(indexFilm, imdbInfo)
+        // console.log(indexFilmPerPage, imdbInfo)
         if (imdbInfo) {
           currentFilm.imdbrating = imdbInfo.imdbrating
+          currentFilm.genre = imdbInfo.genre
         }
         else {
           currentFilm.imdbrating = 'N/A'
         }
 
-        console.log(indexFilm)
-        console.log(currentFilm, '----------------------------------------')
+        console.log(indexFilmPerPage, '----------------------------------------')
+        console.log(currentFilm)
         movieUpdate(currentFilm)
+
+        if (indexFilmPerPage == 99) {
+          currentPage++
+          indexFilmPerPage = -1
+        }
+
+        indexFilmPerPage++
         indexFilm++
-        if (indexFilm < numberMovies) createFilms(spanishMovies)
+
+        if (indexFilm < numberMovies) {
+          createFilms(spanishMovies)
+        }
 
       })
       .catch(error => console.log(error))
 
 
   } else {
+
+    console.log(indexFilmPerPage, '----------------------------------------')
+    console.log('Esto es una Serie')
+
+    if (indexFilmPerPage == 99) {
+      currentPage++
+      indexFilmPerPage = -1
+    }
+
+    indexFilmPerPage++
     indexFilm++
-    // if (indexFilm < spanishMovies.length) return createFilms(spanishMovies)
+
+    // if (indexFilmPerPage < spanishMovies.length) return createFilms(spanishMovies)
     if (indexFilm < numberMovies) return createFilms(spanishMovies)
   }
 
 }
 
 const movieUpdate = movie => {
-  Netflix.create(movie)
+  Movie.create(movie)
     .then(moviesCreated => {
       console.log(`Creada una pelicula`)
     })

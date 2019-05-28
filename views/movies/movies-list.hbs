@@ -1,5 +1,5 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h1>Vista de la lista de pelis por genero</h1>
+
 
 <form action="/list" method="get">
   <select name="genre">
@@ -30,11 +30,19 @@
   </select>
   <button type="submit">boton</button>
 </form>
-{{!-- <form action="/" method="POST">
-   <input type="text" placeholder="Search by Name.." name="search">
-   <button type="submit">search</button>
-</form> --}}
-Entrada de mensaje
 
-
-Enviar mensaje a Sachin Tekchandani
+<div id="movies-card">
+  {{#each movies}}
+  <a href="/detail?netflix_id={{this.netflixid}}">
+    <div id="image">
+      <img src="{{this.image}}" alt="{{this.title}} poster">
+    </div>
+    <h3>Title</h3>
+    <p>{{this.title}}</p>
+    <h4>Rating</h4>
+    <p>{{this.imdbrating}}</p>
+    <h4>Sinopsis</h4>
+    <p>{{this.synopsis}}</p>
+  </a>
+  {{/each}}
+</div>

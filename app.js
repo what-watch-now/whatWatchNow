@@ -68,6 +68,10 @@ require("./passport")(app);
 const index = require("./routes/index.routes");
 app.use("/", index);
 
+const movies = require("./routes/movies.routes");
+app.use("/", movies);
+
+
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
 
