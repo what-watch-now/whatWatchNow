@@ -11,16 +11,32 @@
 
 <body>
 
+  {{!-- {{thisUser.userLoged}} --}}
 
+
+  {{!-- <p>{{thisUser.userLoged}}</p> --}}
   <nav>
-    <a href="/user">User Profile</a>
-    <a href="/admin">Admin Profile</a>
-
     <a href="/">Home</a>
-    <a href="/auth/login">Login</a>
-    <a href="/auth/signup">Signup</a>
-    <a href="/auth/logout">Logout</a>
+
+    {{#if_eq thisUser.userLoged 'user'}}
+      <a href="/user">User Profile</a>
+      <a href="/auth/logout">Logout</a>
+    {{/if_eq}}
+
+    {{#if_eq thisUser.userLoged 'admin'}}
+      <a href="/user">User Profile</a>
+      <a href="/admin">Admin Profile</a>
+      <a href="/auth/logout">Logout</a>
+    {{/if_eq}}
+
+    {{#if_eq thisUser.userLoged 'noLog'}}
+      <a href="/auth/signup">Signup</a>
+      <a href="/auth/login">Login</a>
+    {{/if_eq}}
+
   </nav>
+
+
 
   {{{body}}}
 

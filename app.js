@@ -12,6 +12,14 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
 
+const passport = require('passport');
+const User = require('./models/User.model');
+const LocalStrategy = require('passport-local').Strategy;
+
+
+
+
+
 const app_name = require("./package.json").name;
 const debug = require("debug")(
   `${app_name}:${path.basename(__filename).split(".")[0]}`
@@ -50,8 +58,12 @@ hbs.registerHelper("ifUndefined", (value, options) => {
   }
 });
 
+
 // default value for title local
 app.locals.title = "template of irongenerator";
+
+
+
 
 // Enable authentication using session + passport
 app.use(
@@ -64,6 +76,41 @@ app.use(
 );
 app.use(flash());
 require("./passport")(app);
+
+
+
+
+// function ensureAuthenticated(req, res, next) {
+//   // console.log(req.user)
+//   if (req.isAuthenticated()) return next();
+//   else res.redirect('/auth/login')
+// }
+
+function checkRoles(user) {
+  if (user && user.role == 'user') return 'user'
+  else if (user && user.role == 'admin') return 'admin'
+  else return 'noLog'
+}
+
+
+hbs.registerHelper('if_eq', function(a, b, opts) {
+    if (a == b) {
+        return opts.fn(this);
+    } else {
+        return opts.inverse(this);
+    }
+})
+
+
+app.use((req, res, next) => {
+  // console.log(req.user)
+  console.log(checkRoles(req.user))
+  app.locals.thisUser = { userLoged: checkRoles(req.user) }
+  next();
+})
+
+
+
 
 const index = require("./routes/index.routes");
 app.use("/", index);
