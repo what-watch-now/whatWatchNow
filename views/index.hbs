@@ -1,6 +1,12 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 
+
+{{#if msg}}
+<p>{{msg}}</p>
+{{/if}}
+
+
 <form action="/list" method="get">
   <select name="genre">
     <option value="Action">Action</option>
@@ -34,7 +40,3 @@
    <input type="text" placeholder="Search by Name.." name="search">
    <button type="submit">search</button>
 </form> --}}
-Entrada de mensaje
-
-
-Enviar mensaje a Sachin Tekchandani

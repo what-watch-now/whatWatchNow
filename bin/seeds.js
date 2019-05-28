@@ -21,11 +21,13 @@ mongoose
 let users = [
   {
     username: "alice",
-    password: bcusersrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
+    password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
+    role: 'user'
   },
   {
-    username: "bob",
-    password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
+    username: "admin",
+    password: bcrypt.hashSync("admin", bcrypt.genSaltSync(bcryptSalt)),
+    role: 'admin'
   }
 ]
 
@@ -48,7 +50,7 @@ User.deleteMany()
 
 
 
-
+/*
 
 // Movies
 
@@ -79,7 +81,6 @@ const createFilms = spanishMovies => {
     // console.log(currentFilm, '---------------')
     unogsApi.getImdbInfo(currentFilm.imdbid)
       .then(imdbInfo => {
-        // console.log(indexFilmPerPage, imdbInfo)
         if (imdbInfo) {
           currentFilm.imdbrating = imdbInfo.imdbrating
           currentFilm.genre = imdbInfo.genre
@@ -134,3 +135,5 @@ const movieUpdate = movie => {
     })
     .catch(err => console.log(`Hubo un error: ${err}`))
 }
+
+*/
