@@ -1,8 +1,106 @@
 body {
-  padding: 50px;
+  padding: 0px;
+  margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: linear-gradient(
+    to right top,
+    #27005a,
+    #310041,
+    #30002d,
+    #28001d,
+    #1e0010,
+    #230515,
+    #28091a,
+    #2e0b1e,
+    #490637,
+    #5f0157,
+    #70057f,
+    #741cae
+  );
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+#main-icon {
+  height: 4em;
+}
+#index-select select {
+  border: 0;
+  color: #eee;
+  background: transparent;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 2px 10px;
+  width: 378px;
+  *width: 350px;
+  *background: black;
+  -webkit-appearance: none;
+}
+#index-select {
+  -webkit-appearance: button;
+   -webkit-border-radius: 2px;
+   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+   -webkit-padding-end: 20px;
+   -webkit-padding-start: 2px;
+   -webkit-user-select: none;
+   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+   background-position: 97% center;
+   background-repeat: no-repeat;
+   border: 1px solid #AAA;
+   color: #555;
+   font-size: inherit;
+   margin: 20px;
+   overflow: hidden;
+   padding: 5px 10px;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   width: 300px;
+
+   color: #fff;
+   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#779126, #779126 40%, #779126);
+   background-color: #779126;
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+   padding-left: 15px;
+}
+  // margin: auto;
+  // overflow: hidden;
+  // width: 350px;
+  // -moz-border-radius: 9px 9px 9px 9px;
+  // -webkit-border-radius: 9px 9px 9px 9px;
+  // border-radius: 9px 9px 9px 9px;
+  // box-shadow: 1px 1px 11px #330033;
+  // background-image: linear-gradient(
+  //   to top,
+  //   #665e5e,
+  //   #534c4d,
+  //   #403b3c,
+  //   #2e2a2c,
+  //   #1d1b1c,
+  //   #161415,
+  //   #0d0c0c,
+  //   #000000,
+  //   #000000,
+  //   #000000,
+  //   #000000,
+  //   #000000
+  // );
+
+  // background: black url("http://i62.tinypic.com/15xvbd5.png") no-repeat scroll
+  //   319px center;
 }
 
+#index-form {
+  margin: 1em;
+  padding: 0, 2em;
+}
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+}
+footer {
+  background-color: black;
+  // background-size:
+  color: white;
+  position: absolute;
+  bottom: 0;
 }
