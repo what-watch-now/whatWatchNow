@@ -7,12 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const addToViewList = document.getElementById("view-button")
 
   let heartPressed = false
+  let pooPressed = false
+  let viewPressed = false
 
   // Corazon pulsado
   addToFavList.onclick = (e) => {
     e.preventDefault()
 
-    axios.get(`/update-favourite?movieID=${movieID}`)
+    axios.get(`/update-favouriteList?movieID=${movieID}`)
       .then(res => {
         heartPressed = !heartPressed
 
@@ -29,14 +31,35 @@ document.addEventListener('DOMContentLoaded', () => {
   addToBlackList.onclick = (e) => {
     e.preventDefault()
 
+    axios.get(`/update-blackList?movieID=${movieID}`)
+      .then(res => {
+        pooPressed = !pooPressed
+
+        if (pooPressed) {
+          // pintar poo
+        }
+        else {
+          // despintar poo
+        }
+      })
   }
 
+  // Ojo pulsado
   addToViewList.onclick = (e) => {
     e.preventDefault()
 
+    axios.get(`/update-viewList?movieID=${movieID}`)
+      .then(res => {
+        viewPressed = !viewPressed
 
+        if (viewPressed) {
+          // pintar ojo
+        }
+        else {
+          // despintar ojo
+        }
+      })
   }
-
 
 
 }, false);

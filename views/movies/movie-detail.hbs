@@ -1,25 +1,27 @@
-<a href="/list?genre={{movie.genre}}">Atras</a>
+{{!-- <a href="/list?genre={{movie.genre}}">Atras</a> --}}
+<a href="javascript:history.back()">Atras</a>
 
 <div id="detail-img">
   <img src="{{movie.image}}" alt="{{movie.title}} poster">
 </div>
 <div id="trailer">
-  <p>no esxixte habra que cambiar</p>
+  <p>-------------------Buscar foto guapa porque no hay Trailer------------------------</p>
+  {{!-- <img src="{{movie.}}" alt=""> --}}
 </div>
 
 <div id="detail-all">
-  <h2>Title: </h2>
+  <h2>Titulo: </h2>
   <p>{{movie.title}}</p>
-  <h3>IMDB Rating: </h3>
+  <h3>Nota IMBD: </h3>
   <p>{{movie.imdbrating}}</p>
-  <h4>Rating: </h4>
-  <p>{{movie.rating}}</p>
-  <h4>Relese Year: </h4>
+  <h4>Año lanzamiento: </h4>
   <p>{{movie.released}}</p>
-  <h4>Duration: </h4>
+  <h4>Duración: </h4>
   <p>{{movie.runtime}}</p>
   <h4>Sinopsis:</h4>
   <p>{{movie.synopsis}}</p>
+  <h4>Genero:</h4>
+  <p>{{movie.genre}}</p>
 </div>
 
 <div id="svg-opinion">

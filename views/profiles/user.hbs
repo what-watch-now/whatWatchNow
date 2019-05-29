@@ -4,26 +4,27 @@
 {{!-- {{/if}} --}}
 
 
-<h2>Favorite</h2>
+<h2>Favorites</h2>
 <div id="user-Favorite">
-  {{!-- <img src="/images/like-1.svg" alt="like"> --}}
-
+  <img src="/images/like-1.svg" alt="like">
   {{#each favList}}
   <a href="/detail?netflix_id={{netflixid}}"><img src="{{image}}" alt="{{title}} poster"></a>
   {{/each}}
+</div>
 
-  {{!-- </div>
+
 <h2>Blacklist</h2>
 <div id="user-Blacklist">
   <img src="/images/poop.svg" alt="like">
-  {{#each user}}
-  <a><img src="{{user.blackList.image}}" alt="{{user.blackList.title}} poster"></a>
+  {{#each blackList}}
+  <a href="/detail?netflix_id={{netflixid}}"><img src="{{image}}" alt="{{title}} poster"></a>
   {{/each}}
 </div>
+
 <h2>Viewed</h2>
 <div id="user-viewed">
   <img src="/images/view-1.svg" alt="like">
-  {{#each user}}
-  <a><img src="{{user.viewList.image}}" alt="{{user.viewList.title}} poster"></a>
+  {{#each viewList}}
+  <a href="/detail?netflix_id={{netflixid}}"><img src="{{image}}" alt="{{title}} poster"></a>
   {{/each}}
-</div> --}}
+</div>

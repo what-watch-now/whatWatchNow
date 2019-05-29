@@ -26,6 +26,8 @@ router.get('/user', ensureAuthenticated, (req, res, next) => {
 
   User.findById(req.user._id)
     .populate('favList')
+    .populate('blackList')
+    .populate('viewList')
     .then(user => {
       res.render('profiles/user', user);
     })
@@ -38,8 +40,8 @@ router.get('/admin', [ensureAuthenticated, checkAdmin], (req, res, next) => {
 
 
 
-// update favourites
-router.get('/update-favourite', (req, res, next) => {
+// update favourites list
+router.get('/update-favouriteList', (req, res, next) => {
 
   Movie.findOne({ netflixid: req.query.movieID })
     .then(theMovie => {
@@ -70,7 +72,68 @@ router.get('/update-favourite', (req, res, next) => {
 })
 
 
+// update Black list
+router.get('/update-blackList', (req, res, next) => {
 
+  Movie.findOne({ netflixid: req.query.movieID })
+    .then(theMovie => {
+
+      if (!req.user.blackList.includes(theMovie._id)) {
+        console.log('Guardando Poo')
+        User.findByIdAndUpdate({ _id: req.user._id }, { $push: { blackList: theMovie._id } }, { new: true })
+          .then(userUpdated => {
+            console.log(userUpdated)
+            // TODO: Preguntar a Gabi wtf es esto.
+            res.json({ msg: 'OK' })
+          })
+          .catch(error => console.log(error))
+
+      } else {
+        console.log('Borrando Poo')
+        User.findByIdAndUpdate({ _id: req.user._id }, { $pull: { blackList: theMovie._id } }, { new: true })
+          .then(userUpdated => {
+            console.log(userUpdated)
+            // TODO: Preguntar a Gabi wtf es esto.
+            res.json({ msg: 'OK' })
+          })
+          .catch(error => console.log(error))
+      }
+    })
+
+    .catch(error => console.log(error))
+})
+
+
+// update View list
+router.get('/update-viewList', (req, res, next) => {
+
+  Movie.findOne({ netflixid: req.query.movieID })
+    .then(theMovie => {
+
+      if (!req.user.viewList.includes(theMovie._id)) {
+        console.log('Guardando Peli vista')
+        User.findByIdAndUpdate({ _id: req.user._id }, { $push: { viewList: theMovie._id } }, { new: true })
+          .then(userUpdated => {
+            console.log(userUpdated)
+            // TODO: Preguntar a Gabi wtf es esto.
+            res.json({ msg: 'OK' })
+          })
+          .catch(error => console.log(error))
+
+      } else {
+        console.log('Borrando Peli vista')
+        User.findByIdAndUpdate({ _id: req.user._id }, { $pull: { viewList: theMovie._id } }, { new: true })
+          .then(userUpdated => {
+            console.log(userUpdated)
+            // TODO: Preguntar a Gabi wtf es esto.
+            res.json({ msg: 'OK' })
+          })
+          .catch(error => console.log(error))
+      }
+    })
+
+    .catch(error => console.log(error))
+})
 
 
 module.exports = router;
