@@ -3,6 +3,7 @@ const passport = require("passport");
 const router = express.Router();
 const app = express();
 const User = require("../models/User.model");
+const Movie = require("../models/Movie.model")
 
 
 
@@ -19,30 +20,57 @@ function checkAdmin(req, res, next) {
 }
 
 
-// function checkRoles(req, res, next) {
-//   if (req.User && req.user.role == 'user') return 'user'
-//   else if (req.user && req.user.role == 'admin') return 'admin'
-//   else return
-// }
 
-
-// app.use((req, res, next) => {
-//   app.locals.userLoged = { userLoged: checkRoles(req, res, next) }
-//   console.log(checkRoles(req, res, next))
-//   next();
-// })
-
-
-
-
-/* GET home page */
+// User profile
 router.get('/user', ensureAuthenticated, (req, res, next) => {
-  res.render('profiles/user');
-});
 
+  User.findById(req.user._id)
+    .populate('favList')
+    .then(user => {
+      res.render('profiles/user', user);
+    })
+})
+
+// Admin profile
 router.get('/admin', [ensureAuthenticated, checkAdmin], (req, res, next) => {
   res.render('profiles/admin');
-});
+})
+
+
+
+// update favourites
+router.get('/update-favourite', (req, res, next) => {
+
+  Movie.findOne({ netflixid: req.query.movieID })
+    .then(theMovie => {
+
+      if (!req.user.favList.includes(theMovie._id)) {
+        console.log('Guardando favorito')
+        User.findByIdAndUpdate({ _id: req.user._id }, { $push: { favList: theMovie._id } }, { new: true })
+          .then(userUpdated => {
+            console.log(userUpdated)
+            // TODO: Preguntar a Gabi wtf es esto.
+            res.json({ msg: 'OK' })
+          })
+          .catch(error => console.log(error))
+
+      } else {
+        console.log('Borrando favorito')
+        User.findByIdAndUpdate({ _id: req.user._id }, { $pull: { favList: theMovie._id } }, { new: true })
+          .then(userUpdated => {
+            console.log(userUpdated)
+            // TODO: Preguntar a Gabi wtf es esto.
+            res.json({ msg: 'OK' })
+          })
+          .catch(error => console.log(error))
+      }
+    })
+
+    .catch(error => console.log(error))
+})
+
+
+
 
 
 module.exports = router;

@@ -16,7 +16,6 @@ router.get('/list', (req, res, next) => {
 
 // Movie Detail
 router.get('/detail', (req, res, next) => {
-  console.log(req.query.netflix_id, 'Netflix ID--------------------------')
   Movie.findOne({ netflixid: req.query.netflix_id })
     .then(theMovie => {
       console.log(theMovie)
@@ -24,8 +23,6 @@ router.get('/detail', (req, res, next) => {
     })
     .catch(error => console.log(error))
 })
-
-
 
 
 module.exports = router;

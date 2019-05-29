@@ -9,7 +9,19 @@ const userSchema = new Schema(
       type: String,
       enum: ["user", "admin"],
       default: "user"
-    }
+    },
+    favList: [{
+      type: Schema.Types.ObjectId,
+      ref: "Movie"
+    }],
+    blackList: [{
+      type: Schema.Types.ObjectId,
+      ref: "Movie"
+    }],
+    viewList: [{
+      type: Schema.Types.ObjectId,
+      ref: "Movie"
+    }]
   },
   {
     timestamps: {

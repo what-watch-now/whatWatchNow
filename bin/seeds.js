@@ -22,12 +22,18 @@ let users = [
   {
     username: "alice",
     password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
-    role: 'user'
+    role: 'user',
+    favList: [],
+    blackList: [],
+    viewList: []
   },
   {
     username: "admin",
     password: bcrypt.hashSync("admin", bcrypt.genSaltSync(bcryptSalt)),
-    role: 'admin'
+    role: 'admin',
+    favList: [],
+    blackList: [],
+    viewList: []
   }
 ]
 
@@ -50,7 +56,7 @@ User.deleteMany()
 
 
 
-/*
+
 
 // Movies
 
@@ -135,5 +141,3 @@ const movieUpdate = movie => {
     })
     .catch(err => console.log(`Hubo un error: ${err}`))
 }
-
-*/
