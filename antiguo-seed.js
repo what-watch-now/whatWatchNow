@@ -18,11 +18,6 @@ mongoose
     console.error('Error connecting to mongo', err)
   });
 
-
-
-/*  
-// Users
-
 let users = [
   {
     username: "alice",
@@ -58,7 +53,7 @@ User.deleteMany()
     // mongoose.disconnect()
     throw err
   })
-*/
+
 
 
 
@@ -75,81 +70,47 @@ let indexFilmPerPage = 0
 let currentPage = 1
 let indexFilm = 0
 
-
-const createFilms = () => {
-  unogsApi.getFilms(SpainCode, typeMedia, currentPage)
-    .then(spanishMovies => recursiveFunction(spanishMovies))
-    .catch(error => console.log(error))
-}
-
-const getImdbInformation = imdbId => {
-  return unogsApi.getImdbInfo(imdbId)
-    .then(imdbInfo => imdbInfo)
-    .catch(error => console.log(error))
-}
-
-const getLargeImage = (netflixId) => {
-  return unogsApi.getImages(netflixId)
-    .then(image => image)
-    .catch(error => console.log(error))
-}
-
-const movieUpdate = movie => {
-  Movie.create(movie)
-    .then(moviesCreated => {
-      console.log(`Creada una pelicula`)
-    })
-    .catch(err => console.log(`Hubo un error: ${err}`))
-}
+unogsApi.getFilms(SpainCode, typeMedia, currentPage)
+  .then(spanishMovies => createFilms(spanishMovies))
+  .catch(error => console.log(error))
 
 
-
-const recursiveFunction = spanishMovies => {
+const createFilms = spanishMovies => {
   // const numberMovies = spanishMovies.length
-  const numberMovies = 10
+  const numberMovies = 20
 
   // const currentFilm = spanishMovies.type[indexFilmPerPage]
   const currentFilm = spanishMovies[indexFilmPerPage]
   // console.log(indexFilmPerPage)
   // console.log(currentFilm)
   if (currentFilm.type === 'movie' && typeof currentFilm.imdbid) {
-
-    console.log(indexFilmPerPage, '----------------------------------------')
-
-    getImdbInformation(currentFilm.imdbid)
-      // unogsApi.getImdbInfo(currentFilm.imdbid)
+    // console.log(currentFilm, '---------------')
+    unogsApi.getImdbInfo(currentFilm.imdbid)
       .then(imdbInfo => {
         if (imdbInfo) {
           currentFilm.imdbrating = imdbInfo.imdbrating
           currentFilm.genre = imdbInfo.genre
         }
-        else currentFilm.imdbrating = 'N/A'
+        else {
+          currentFilm.imdbrating = 'N/A'
+        }
 
+        console.log(indexFilmPerPage, '----------------------------------------')
+        console.log(currentFilm)
+        movieUpdate(currentFilm)
 
-        getLargeImage(currentFilm.netflixid)
-          .then(largeImage => {
-            if (largeImage) currentFilm.largeimage = largeImage
+        if (indexFilmPerPage == 99) {
+          currentPage++
+          indexFilmPerPage = -1
+        }
 
+        indexFilmPerPage++
+        indexFilm++
 
-            // console.log(currentFilm)
-            movieUpdate(currentFilm)
+        if (indexFilm < numberMovies) {
+          createFilms(spanishMovies)
+        }
 
-
-
-            if (indexFilmPerPage == 99) {
-              currentPage++
-              indexFilmPerPage = -1
-            }
-
-            indexFilmPerPage++
-            indexFilm++
-
-            if (indexFilm < numberMovies) {
-              recursiveFunction(spanishMovies)
-            }
-
-          })
-          .catch(error => console.log(error))
       })
       .catch(error => console.log(error))
 
@@ -167,12 +128,16 @@ const recursiveFunction = spanishMovies => {
     indexFilmPerPage++
     indexFilm++
 
-    // if (indexFilmPerPage < spanishMovies.length) return recursiveFunction(spanishMovies)
-    if (indexFilm < numberMovies) return recursiveFunction(spanishMovies)
+    // if (indexFilmPerPage < spanishMovies.length) return createFilms(spanishMovies)
+    if (indexFilm < numberMovies) return createFilms(spanishMovies)
   }
 
 }
 
-
-// Crear peliculas
-createFilms()
+const movieUpdate = movie => {
+  Movie.create(movie)
+    .then(moviesCreated => {
+      console.log(`Creada una pelicula`)
+    })
+    .catch(err => console.log(`Hubo un error: ${err}`))
+}

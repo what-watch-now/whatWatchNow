@@ -28,17 +28,26 @@ class ApiHandler {
 
   getImdbInfo(imbdId) {
     // TODO: rellenar esta url cuando se sepa cual es el request exacto
-    console.log(typeof imbdId)
     return axios.get(`https://unogs-unogs-v1.p.rapidapi.com/aaapi.cgi/?t=imdb&q=${imbdId}`, {
       headers: {
         "X-RapidAPI-Host": `${process.env.RapidAPIHost}`,
         "X-RapidAPI-Key": `${process.env.RapidAPIKey}`
       }
     })
-      .then(response => {
-        return response.data.imdbinfo
-      })
+      .then(response => response.data.imdbinfo)
+  }
 
+  getImages(imbdId) {
+    return axios.get(`https://unogs-unogs-v1.p.rapidapi.com/aaapi.cgi/?t=images&q=${imbdId}`, {
+      headers: {
+        "X-RapidAPI-Host": `${process.env.RapidAPIHost}`,
+        "X-RapidAPI-Key": `${process.env.RapidAPIKey}`
+      }
+    })
+      .then(response => {
+        // console.log('la respuesta de getImages', response.data.RESULTS[0].image[0].url)
+        return response.data.RESULTS[0].image[0].url
+      })
   }
 
 }
