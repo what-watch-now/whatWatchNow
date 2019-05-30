@@ -46,7 +46,7 @@ footer {
   background-image: url(http://i62.tinypic.com/15xvbd5.png), linear-gradient(to bottom, #2e2e2e, #292929, #232323, #1e1e1e, #191919, #181818, #171717, #161616, #191919, #1c1c1c, #202020, #232323);
   -webkit-appearance: button;
   border-radius: 5px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 3px rgba(44, 44, 44, 0.1);
   -webkit-padding-end: 20px;
   -webkit-padding-start: 2px;
   user-select: none;
@@ -212,9 +212,42 @@ footer {
     .detail-page .detail-movie .detail-text .detail-definition {
       margin-left: 5px; }
 
-#index-form {
-  margin: 1em;
-  padding: 0, 2em; }
+.signup {
+  margin: 150px 40vw;
+  text-align: center; }
+  .signup .signup-username,
+  .signup .signup-password {
+    margin-bottom: 50px; }
+    .signup .signup-username label,
+    .signup .signup-password label {
+      display: block;
+      text-align: left;
+      font-size: 1.2em;
+      font-weight: 300; }
+    .signup .signup-username input,
+    .signup .signup-password input {
+      border: 1px;
+      border-radius: 2px;
+      width: 100%;
+      padding: 10px 0px;
+      margin: 8px 0;
+      display: block;
+      margin: auto;
+      font-size: 1.2em; }
+  .signup button {
+    width: 100%;
+    padding: 12px 0px;
+    background-image: linear-gradient(to bottom, #ffbe06, #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
+    border: 1px;
+    border-radius: 5px; }
+  .signup a {
+    text-decoration: none;
+    color: #ff5704; }
+    .signup a:hover {
+      text-decoration: none; }
+  .signup h2 {
+    font-size: 2em;
+    font-weight: 300; }
 
 footer {
   background-color: black;
