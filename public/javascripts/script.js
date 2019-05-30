@@ -20,21 +20,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   const paintHeart = (isAdded) => {
-    console.log('Esta anhadida la peli??', isAdded)
-    // if (!isAdded) {
-    //   favouriteImg.setAttribute('class', 'shown')
-    //   noFavouriteImg.setAttribute('class', 'unshown')
-    // }
-    // else {
-    //   favouriteImg.setAttribute('class', 'unshown')
-    //   noFavouriteImg.setAttribute('class', 'shown')
-    // }
+    if (isAdded) {
+      favouriteImg.setAttribute('class', 'shown')
+      noFavouriteImg.setAttribute('class', 'unshown')
+    }
+    else {
+      favouriteImg.setAttribute('class', 'unshown')
+      noFavouriteImg.setAttribute('class', 'shown')
+    }
   }
 
-  const paintPoo = () => {
-    pooPressed = !pooPressed
-
-    if (pooPressed) {
+  const paintPoo = (isAdded) => {
+    if (isAdded) {
       blackImg.setAttribute('class', 'shown')
       noBlackImg.setAttribute('class', 'unshown')
     }
@@ -44,10 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  const paintView = () => {
-    viewPressed = !viewPressed
-
-    if (viewPressed) {
+  const paintView = (isAdded) => {
+    if (isAdded) {
       viewImg.setAttribute('class', 'shown')
       noViewImg.setAttribute('class', 'unshown')
     }
@@ -56,42 +51,42 @@ document.addEventListener('DOMContentLoaded', () => {
       noViewImg.setAttribute('class', 'shown')
     }
   }
-  console.log(addToFavList, addToBlackList, addToViewList)
+
+  // Para que este actualizado cuando se recargue
+  paintHeart(favouriteAdded)
+  paintPoo(blackAdded)
+  paintView(viewAdded)
+
+
+
+
 
   // Corazon pulsado
   addToFavList.onclick = (e) => {
     e.preventDefault()
-    // console.log(favList, '---------------------------------Lista')
 
     axios.get(`/update-favouriteList?movieID=${movieID}`)
-      .then(response => {
-        console.log(response.data)
-        // console.log(response.data._movieId)
-        // console.log(response.data.favList)
-        // if (response.data.msg == 'adding') {
-        // if (response.data.favList.includes(response.data._movieId))
-        //   paintHeart(true)
-        // else
-        //   paintHeart(false)
-        // }
-        paintHeart(true)
-      })
+      .then(response => paintHeart(response.data.favourite))
   }
+
+
 
   // Poo pulsado
   addToBlackList.onclick = (e) => {
     e.preventDefault()
 
     axios.get(`/update-blackList?movieID=${movieID}`)
-      .then(res => paintPoo())
+      .then(response => paintPoo(response.data.black))
   }
+
+
 
   // Ojo pulsado
   addToViewList.onclick = (e) => {
     e.preventDefault()
 
     axios.get(`/update-viewList?movieID=${movieID}`)
-      .then(res => paintView())
+      .then(response => paintView(response.data.view))
   }
 
 

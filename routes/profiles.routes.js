@@ -40,6 +40,11 @@ router.get('/admin', [ensureAuthenticated, checkAdmin], (req, res, next) => {
 
 
 
+
+
+
+
+
 // update favourites list
 router.get('/update-favouriteList', (req, res, next) => {
 
@@ -50,8 +55,8 @@ router.get('/update-favouriteList', (req, res, next) => {
         console.log('Guardando favorito')
         User.findByIdAndUpdate({ _id: req.user._id }, { $push: { favList: theMovie._id } }, { new: true })
           .then(userUpdated => {
-            // TODO: Preguntar a Gabi wtf es esto.
-            res.json({ msg: 'OK', isAdded: true })
+            console.log(userUpdated)
+            res.json({ favourite: true })
           })
           .catch(error => console.log(error))
 
@@ -60,8 +65,7 @@ router.get('/update-favouriteList', (req, res, next) => {
         User.findByIdAndUpdate({ _id: req.user._id }, { $pull: { favList: theMovie._id } }, { new: true })
           .then(userUpdated => {
             console.log(userUpdated)
-            // TODO: Preguntar a Gabi wtf es esto.
-            res.json({ msg: 'OK', isAdded: false })
+            res.json({ favourite: false })
           })
           .catch(error => console.log(error))
       }
@@ -69,6 +73,9 @@ router.get('/update-favouriteList', (req, res, next) => {
 
     .catch(error => console.log(error))
 })
+
+
+
 
 
 // update Black list
@@ -82,8 +89,7 @@ router.get('/update-blackList', (req, res, next) => {
         User.findByIdAndUpdate({ _id: req.user._id }, { $push: { blackList: theMovie._id } }, { new: true })
           .then(userUpdated => {
             console.log(userUpdated)
-            // TODO: Preguntar a Gabi wtf es esto.
-            res.json({ msg: 'OK' })
+            res.json({ black: true })
           })
           .catch(error => console.log(error))
 
@@ -92,8 +98,7 @@ router.get('/update-blackList', (req, res, next) => {
         User.findByIdAndUpdate({ _id: req.user._id }, { $pull: { blackList: theMovie._id } }, { new: true })
           .then(userUpdated => {
             console.log(userUpdated)
-            // TODO: Preguntar a Gabi wtf es esto.
-            res.json({ msg: 'OK' })
+            res.json({ black: false })
           })
           .catch(error => console.log(error))
       }
@@ -101,6 +106,10 @@ router.get('/update-blackList', (req, res, next) => {
 
     .catch(error => console.log(error))
 })
+
+
+
+
 
 
 // update View list
@@ -114,8 +123,7 @@ router.get('/update-viewList', (req, res, next) => {
         User.findByIdAndUpdate({ _id: req.user._id }, { $push: { viewList: theMovie._id } }, { new: true })
           .then(userUpdated => {
             console.log(userUpdated)
-            // TODO: Preguntar a Gabi wtf es esto.
-            res.json({ msg: 'OK' })
+            res.json({ view: true })
           })
           .catch(error => console.log(error))
 
@@ -124,8 +132,7 @@ router.get('/update-viewList', (req, res, next) => {
         User.findByIdAndUpdate({ _id: req.user._id }, { $pull: { viewList: theMovie._id } }, { new: true })
           .then(userUpdated => {
             console.log(userUpdated)
-            // TODO: Preguntar a Gabi wtf es esto.
-            res.json({ msg: 'OK' })
+            res.json({ view: false })
           })
           .catch(error => console.log(error))
       }

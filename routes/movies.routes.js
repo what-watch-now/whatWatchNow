@@ -13,20 +13,31 @@ router.get('/list', (req, res, next) => {
     .catch(error => console.log(error))
 })
 
+
+
 // Movie Detail
 router.get('/detail', (req, res, next) => {
   Movie.findOne({ netflixid: req.query.netflix_id })
     .then(theMovie => {
-      let filmAdded = false
+      let favouriteAdded = false
+      let blackAdded = false
+      let viewAdded = false
+
       if (req.user.favList.includes(theMovie._id))
-        filmAdded = true
+        favouriteAdded = true
+      if (req.user.blackList.includes(theMovie._id))
+        blackAdded = true
+      if (req.user.viewList.includes(theMovie._id))
+        viewAdded = true
+
 
       res.render('movies/movie-detail', {
         user: req.user,
         movie: theMovie,
-        movieJSON: JSON.stringify(theMovie),
-
-        filmAdded
+        // movieJSON: JSON.stringify(theMovie),
+        favouriteAdded,
+        blackAdded,
+        viewAdded
       })
     })
     .catch(error => console.log(error))

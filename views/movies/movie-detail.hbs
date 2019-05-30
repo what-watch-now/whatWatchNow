@@ -35,14 +35,21 @@
         </a>
       </div>
       {{/if}}
-
-      <script>
-        const movieID = {{{ movie.netflixid }}}
-        const movie = {{{ movieJSON }}}
-
-      </script>
-
+      {{!-- ---------------------------------------------------------}}
 
     </div>
   </div>
+</div>
+{{!-- ---------------------------------------------------------}}
+
+<script>
+  const movieID = {{{ movie.netflixid }}}
+  //const movie = {{{ movieJSON }}}
+  const favouriteAdded = {{{ favouriteAdded }}}
+  const blackAdded = {{{ blackAdded }}}
+  const viewAdded = {{{ viewAdded }}}
+</script>
+
+</div>
+</div>
 </div>
