@@ -1,28 +1,57 @@
-<a href="/list?genre={{movie.genre}}">Atras</a>
+{{!-- <div class="detail-page">
+  <a href="/list?genre={{movie.genre}}">
+    <button>Atras</button>
+  </a>
+  <div class="detail-movie">
+    <div class="detail-img">
+      <img src="{{movie.image}" alt="{{movie.title}} poster">
+    </div>
+    <div class="detail-largeimg">
+      <img src="{{movie.largeimage}}" alt="{{movie.title}} large image">
+    </div>
+    <div class="detail-text">
+      <h2><span class="detail-query">Titulo: </span><span class="detail-definition">{{movie.title}}</span></h2>
+      <h3><span class="detail-query">Nota IMDB: </span><span class="detail-definition">{{movie.imdbrating}}</span></h3>
+      <h4><span class="detail-query">Rating: </span><span class="detail-definition">{{movie.rating}}</span></h4>
+      <h4><span class="detail-query">Año de lanzamiento: </span><span class="detail-definition">{{movie.released}}</span></h4>
+      <h4><span class="detail-query">Duración: </span><span class="detail-definition">{{movie.runtime}}</span> </h4>
+      <h4><span class="detail-query">Sinopsis: </span><span class="detail-definition">{{movie.sinopsis}}</span></h4>
+      <div class="svg-opinion">
+        <img src="/images/like.svg" alt="Like">
+        <img src="/images/poop-1.svg" alt="Blacklist">
+        <img src="/images/view.svg" alt="View">
+      </div>
+    </div>
+  </div>
+</div> --}}
+<div class="detail-page">
+  <a href="/list?genre={{movie.genre}}">
+    <button>Atras</button>
+  </a>
+  <div class="detail-movie">
+    <div class="detail-img">
+      <img src="/images/bp.jpg" alt="{{movie.title}} poster">
+    </div>
+    {{!-- <div class="detail-largeimg">
+      <img src="/images/lbp.jpg" alt="{{movie.title}} large image">
+    </div> --}}
 
-<div id="detail-img">
-  <img src="{{movie.image}}" alt="{{movie.title}} poster">
-</div>
-<div id="trailer">
-  <p>no esxixte habra que cambiar</p>
-</div>
+    <div class="detail-text">
+      <h2><span class="detail-query">Title: </span><span class="detail-definition">Lorem ipsum dolor</span></h2>
+      <h3><span class="detail-query">IMDB Rating: </span><span class="detail-definition">8.9</span></h3>
+      <h4><span class="detail-query">Rating: </span><span class="detail-definition">8.9</span></h4>
+      <h4><span class="detail-query">Relese Year: </span><span class="detail-definition">4657</span></h4>
+      <h4><span class="detail-query">Duración: </span><span class="detail-definition">2h54m</span> </h4>
+      <h4><span class="detail-query">Sinopsis: </span><span class="detail-definition">Lorem, ipsum dolor sit amet
+          consectetur adipisicing elit. Similique aspernatur distinctio, modi in est
+          architecto. Fuga quibusdam libero, vero, nemo, velit voluptate aperiam maiores rerum reiciendis nam ipsa quas
+          suscipit.</span></h4>
+      <div class="svg-opinion">
+        <img src="/images/like.svg" alt="Like">
+        <img src="/images/poop-1.svg" alt="Blacklist">
+        <img src="/images/view.svg" alt="View">
+      </div>
+    </div>
 
-<div id="detail-all">
-  <h2>Title: </h2>
-  <p>{{movie.title}}</p>
-  <h3>IMDB Rating: </h3>
-  <p>{{movie.imdbrating}}</p>
-  <h4>Rating: </h4>
-  <p>{{movie.rating}}</p>
-  <h4>Relese Year: </h4>
-  <p>{{movie.released}}</p>
-  <h4>Duration: </h4>
-  <p>{{movie.runtime}}</p>
-  <h4>Sinopsis:</h4>
-  <p>{{movie.sinopsis}}</p>
-</div>
-<div id="svg-opinion">
-  <img src="/images/like.svg" alt="Like">
-  <img src="/images/poop-1.svg" alt="Blacklist">
-  <img src="/images/view-1.svg" alt="View">
+  </div>
 </div>

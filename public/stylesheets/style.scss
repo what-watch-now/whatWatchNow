@@ -1,9 +1,51 @@
-body {
-  padding: 0px;
-  margin: 0;
-  font: 14px "Montserrat", sans-serif;
-  background: linear-gradient(
-    to right top,
+$orangeGradient: linear-gradient(
+  to bottom,
+  #ffbe06,
+  #ffad00,
+  #ff9c00,
+  #ff8a00,
+  #ff7800,
+  #ff6e00,
+  #ff6301,
+  #ff5704,
+  #ff5203,
+  #ff4d01,
+  #ff4801,
+  #ff4200
+);
+$blackGradient: linear-gradient(
+  to right bottom,
+  #2e2e2e,
+  #292929,
+  #232323,
+  #1e1e1e,
+  #191919,
+  #181818,
+  #171717,
+  #161616,
+  #191919,
+  #1c1c1c,
+  #202020,
+  #232323
+);
+$greyGradient: linear-gradient(
+  to right top,
+  #2e2e2e,
+  #292929,
+  #232323,
+  #1e1e1e,
+  #191919,
+  #181818,
+  #171717,
+  #161616,
+  #191919,
+  #1c1c1c,
+  #202020,
+  #232323
+);
+$blackDropdown: url(http://i62.tinypic.com/15xvbd5.png),
+  linear-gradient(
+    to bottom,
     #2e2e2e,
     #292929,
     #232323,
@@ -17,6 +59,12 @@ body {
     #202020,
     #232323
   );
+body {
+  padding: 0px;
+  margin: 0;
+  font: 14px "Montserrat", sans-serif;
+  background: $greyGradient;
+  color: white;
   background-repeat: no-repeat;
   height: 100vh;
 }
@@ -48,50 +96,6 @@ body {
 }
 //-------Header with navbar ends here--------//
 //
-//-------Orange yellow gradient starts here--------//
-.index-select button,
-.index-title h1,
-.list-select button {
-  background-image: linear-gradient(
-    to bottom,
-    #ffbe06,
-    #ffad00,
-    #ff9c00,
-    #ff8a00,
-    #ff7800,
-    #ff6e00,
-    #ff6301,
-    #ff5704,
-    #ff5203,
-    #ff4d01,
-    #ff4801,
-    #ff4200
-  );
-}
-//-------Orange yellow gradient ends here--------//
-//
-//-------Black Grey gradient starts here--------//
-.index-select select,
-.list-select select {
-  background-image: url(http://i62.tinypic.com/15xvbd5.png),
-    linear-gradient(
-      to bottom,
-      #2e2e2e,
-      #292929,
-      #232323,
-      #1e1e1e,
-      #191919,
-      #181818,
-      #171717,
-      #161616,
-      #191919,
-      #1c1c1c,
-      #202020,
-      #232323
-    );
-}
-//-------Black Grey gradient ends here--------//
-//
 //-------Text align center starts here--------//
 .index-select,
 .index-select button,
@@ -110,6 +114,7 @@ footer {
 //
 //-------Genre Select Index bar starts here--------//
 .index-select select {
+  background-image: $blackDropdown;
   -webkit-appearance: button;
   border-radius: 5px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
@@ -140,6 +145,7 @@ footer {
 }
 
 .index-select button {
+  background-image: $orangeGradient;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   color: white;
@@ -147,9 +153,11 @@ footer {
   padding: 0.5em 2em;
   margin-top: 20px;
   border: 1px;
+  border-radius: 5px;
 }
 //-------Genre Select Index bar & button starts here--------//
 .index-title h1 {
+  background-image: $orangeGradient;
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
   font-size: 5em;
@@ -172,24 +180,7 @@ footer {
 }
 
 .card {
-  // background-color: #000;
-  background-image: linear-gradient(
-    to right bottom,
-    #2e2e2e,
-    #292929,
-    #232323,
-    #1e1e1e,
-    #191919,
-    #181818,
-    #171717,
-    #161616,
-    #191919,
-    #1c1c1c,
-    #202020,
-    #232323
-  );
-  // border: #2e2e2e;
-  // border-width: 2px;
+  background-image: $blackGradient;
   padding: 5px;
   border-radius: 5px;
   min-width: 200px;
@@ -221,6 +212,7 @@ footer {
   justify-content: center;
 }
 .list-select select {
+  background-image: $blackDropdown;
   -webkit-appearance: button;
   border-radius: 5px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
@@ -248,6 +240,7 @@ footer {
   color: black;
 }
 .list-select button {
+  background-image: $orangeGradient;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   color: white;
@@ -257,14 +250,79 @@ footer {
   border-radius: 5px;
 }
 // -----movie.list ends here----//
+//
+//-------movie-detail starts here--------//
+.detail-page {
+  a {
+    text-decoration: none;
+    color: white;
+    button {
+      background-image: $orangeGradient;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 300;
+      color: white;
+      font-size: 1em;
+      padding: 0.25em 1em;
+      margin-top: 10px;
+      border: 1px;
+      border-radius: 5px;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .detail-movie {
+    display: flex;
+    align-items: center;
+    .detail-img img {
+      margin-top: 50px;
+      margin-left: 50px;
+      height: 500px;
+    }
+    .svg-opinion {
+      margin-top: 45px;
+      display: flex;
+      justify-content: space-around;
+      img {
+        height: 6em;
+        // margin-left: 30px;
+      }
+    }
+    .detail-text {
+      display: flex;
+      flex-direction: column;
+      margin-left: 100px;
+      .detail-query {
+        font-weight: 300;
+      }
+      h2 {
+        .detail-definition {
+          font-size: 2em;
+        }
+      }
+      h3 {
+        .detail-definition {
+          font-size: 1.3em;
+        }
+      }
+      h4 {
+        .detail-definition {
+          font-size: 1.2em;
+        }
+      }
+      .detail-definition {
+        margin-left: 5px;
+      }
+    }
+  }
+}
+//-------movie-detail ends here--------//
 
 #index-form {
   margin: 1em;
   padding: 0, 2em;
 }
-// a {
-//   color: greenyellow;
-// }
 footer {
   background-color: black;
   // background-size:

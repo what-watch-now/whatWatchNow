@@ -4,6 +4,7 @@ body {
   margin: 0;
   font: 14px "Montserrat", sans-serif;
   background: linear-gradient(to right top, #2e2e2e, #292929, #232323, #1e1e1e, #191919, #181818, #171717, #161616, #191919, #1c1c1c, #202020, #232323);
+  color: white;
   background-repeat: no-repeat;
   height: 100vh; }
 
@@ -31,15 +32,6 @@ body {
   height: 4em;
   margin: 5px 10px; }
 
-.index-select button,
-.index-title h1,
-.list-select button {
-  background-image: linear-gradient(to bottom, #ffbe06, #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200); }
-
-.index-select select,
-.list-select select {
-  background-image: url(http://i62.tinypic.com/15xvbd5.png), linear-gradient(to bottom, #2e2e2e, #292929, #232323, #1e1e1e, #191919, #181818, #171717, #161616, #191919, #1c1c1c, #202020, #232323); }
-
 .index-select,
 .index-select button,
 .index-title,
@@ -51,6 +43,7 @@ footer {
   display: block; }
 
 .index-select select {
+  background-image: url(http://i62.tinypic.com/15xvbd5.png), linear-gradient(to bottom, #2e2e2e, #292929, #232323, #1e1e1e, #191919, #181818, #171717, #161616, #191919, #1c1c1c, #202020, #232323);
   -webkit-appearance: button;
   border-radius: 5px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
@@ -78,15 +71,18 @@ footer {
   color: black; }
 
 .index-select button {
+  background-image: linear-gradient(to bottom, #ffbe06, #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   color: white;
   font-size: 1.5em;
   padding: 0.5em 2em;
   margin-top: 20px;
-  border: 1px; }
+  border: 1px;
+  border-radius: 5px; }
 
 .index-title h1 {
+  background-image: linear-gradient(to bottom, #ffbe06, #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
   font-size: 5em;
@@ -135,6 +131,7 @@ footer {
   justify-content: center; }
 
 .list-select select {
+  background-image: url(http://i62.tinypic.com/15xvbd5.png), linear-gradient(to bottom, #2e2e2e, #292929, #232323, #1e1e1e, #191919, #181818, #171717, #161616, #191919, #1c1c1c, #202020, #232323);
   -webkit-appearance: button;
   border-radius: 5px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
@@ -162,6 +159,7 @@ footer {
   color: black; }
 
 .list-select button {
+  background-image: linear-gradient(to bottom, #ffbe06, #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   color: white;
@@ -169,6 +167,50 @@ footer {
   padding: 0.3em 1em;
   border: 1px;
   border-radius: 5px; }
+
+.detail-page a {
+  text-decoration: none;
+  color: white; }
+  .detail-page a button {
+    background-image: linear-gradient(to bottom, #ffbe06, #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    color: white;
+    font-size: 1em;
+    padding: 0.25em 1em;
+    margin-top: 10px;
+    border: 1px;
+    border-radius: 5px; }
+  .detail-page a:hover {
+    text-decoration: none; }
+
+.detail-page .detail-movie {
+  display: flex;
+  align-items: center; }
+  .detail-page .detail-movie .detail-img img {
+    margin-top: 50px;
+    margin-left: 50px;
+    height: 500px; }
+  .detail-page .detail-movie .svg-opinion {
+    margin-top: 45px;
+    display: flex;
+    justify-content: space-around; }
+    .detail-page .detail-movie .svg-opinion img {
+      height: 6em; }
+  .detail-page .detail-movie .detail-text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px; }
+    .detail-page .detail-movie .detail-text .detail-query {
+      font-weight: 300; }
+    .detail-page .detail-movie .detail-text h2 .detail-definition {
+      font-size: 2em; }
+    .detail-page .detail-movie .detail-text h3 .detail-definition {
+      font-size: 1.3em; }
+    .detail-page .detail-movie .detail-text h4 .detail-definition {
+      font-size: 1.2em; }
+    .detail-page .detail-movie .detail-text .detail-definition {
+      margin-left: 5px; }
 
 #index-form {
   margin: 1em;
