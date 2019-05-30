@@ -2,7 +2,7 @@
 
 // To execute this seed, run from the root of the project
 // $ node bin/seeds.js
-
+require("dotenv").config();
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const User = require("../models/User.model");
@@ -10,15 +10,15 @@ const User = require("../models/User.model");
 const bcryptSalt = 10;
 
 mongoose
-  .connect('mongodb://localhost/wwn', { useNewUrlParser: true })
+  .connect(process.env.DB, { useNewUrlParser: true })
   .then(x => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
+    console.log(
+      `Connected to Mongo! Database name: "${x.connections[0].name}"`
+    );
   })
   .catch(err => {
-    console.error('Error connecting to mongo', err)
+    console.error("Error connecting to mongo", err);
   });
-
-
 
 /*  
 // Users
@@ -60,119 +60,106 @@ User.deleteMany()
   })
 */
 
-
-
-
 // Movies
 
-const Movie = require('../models/Movie.model')
+const Movie = require("../models/Movie.model");
 
-const ApiHandler = require('./handler')
-const unogsApi = new ApiHandler('https://unogs-unogs-v1.p.rapidapi.com/aaapi.cgi')
-const SpainCode = 270
-const typeMedia = 'movie'
-let indexFilmPerPage = 0
-let currentPage = 1
-let indexFilm = 0
-
+const ApiHandler = require("./handler");
+const unogsApi = new ApiHandler(
+  "https://unogs-unogs-v1.p.rapidapi.com/aaapi.cgi"
+);
+const SpainCode = 270;
+const typeMedia = "movie";
+let indexFilmPerPage = 0;
+let currentPage = 1;
+let indexFilm = 0;
 
 const createFilms = () => {
-  unogsApi.getFilms(SpainCode, typeMedia, currentPage)
+  unogsApi
+    .getFilms(SpainCode, typeMedia, currentPage)
     .then(spanishMovies => recursiveFunction(spanishMovies))
-    .catch(error => console.log(error))
-}
+    .catch(error => console.log(error));
+};
 
 const getImdbInformation = imdbId => {
-  return unogsApi.getImdbInfo(imdbId)
+  return unogsApi
+    .getImdbInfo(imdbId)
     .then(imdbInfo => imdbInfo)
-    .catch(error => console.log(error))
-}
+    .catch(error => console.log(error));
+};
 
-const getLargeImage = (netflixId) => {
-  return unogsApi.getImages(netflixId)
+const getLargeImage = netflixId => {
+  return unogsApi
+    .getImages(netflixId)
     .then(image => image)
-    .catch(error => console.log(error))
-}
+    .catch(error => console.log(error));
+};
 
 const movieUpdate = movie => {
   Movie.create(movie)
     .then(moviesCreated => {
-      console.log(`Creada una pelicula`)
+      console.log(`Creada una pelicula`);
     })
-    .catch(err => console.log(`Hubo un error: ${err}`))
-}
-
-
+    .catch(err => console.log(`Hubo un error: ${err}`));
+};
 
 const recursiveFunction = spanishMovies => {
   // const numberMovies = spanishMovies.length
-  const numberMovies = 10
+  const numberMovies = 10;
 
   // const currentFilm = spanishMovies.type[indexFilmPerPage]
-  const currentFilm = spanishMovies[indexFilmPerPage]
+  const currentFilm = spanishMovies[indexFilmPerPage];
   // console.log(indexFilmPerPage)
   // console.log(currentFilm)
-  if (currentFilm.type === 'movie' && typeof currentFilm.imdbid) {
-
-    console.log(indexFilmPerPage, '----------------------------------------')
+  if (currentFilm.type === "movie" && typeof currentFilm.imdbid) {
+    console.log(indexFilmPerPage, "----------------------------------------");
 
     getImdbInformation(currentFilm.imdbid)
       // unogsApi.getImdbInfo(currentFilm.imdbid)
       .then(imdbInfo => {
         if (imdbInfo) {
-          currentFilm.imdbrating = imdbInfo.imdbrating
-          currentFilm.genre = imdbInfo.genre
-        }
-        else currentFilm.imdbrating = 'N/A'
-
+          currentFilm.imdbrating = imdbInfo.imdbrating;
+          currentFilm.genre = imdbInfo.genre;
+        } else currentFilm.imdbrating = "N/A";
 
         getLargeImage(currentFilm.netflixid)
           .then(largeImage => {
-            if (largeImage) currentFilm.largeimage = largeImage
-
+            if (largeImage) currentFilm.largeimage = largeImage;
 
             // console.log(currentFilm)
-            movieUpdate(currentFilm)
-
-
+            movieUpdate(currentFilm);
 
             if (indexFilmPerPage == 99) {
-              currentPage++
-              indexFilmPerPage = -1
+              currentPage++;
+              indexFilmPerPage = -1;
             }
 
-            indexFilmPerPage++
-            indexFilm++
+            indexFilmPerPage++;
+            indexFilm++;
 
             if (indexFilm < numberMovies) {
-              recursiveFunction(spanishMovies)
+              recursiveFunction(spanishMovies);
             }
-
           })
-          .catch(error => console.log(error))
+          .catch(error => console.log(error));
       })
-      .catch(error => console.log(error))
-
-
+      .catch(error => console.log(error));
   } else {
-
-    console.log(indexFilmPerPage, '----------------------------------------')
-    console.log('Esto es una Serie')
+    console.log(indexFilmPerPage, "----------------------------------------");
+    console.log("Esto es una Serie");
 
     if (indexFilmPerPage == 99) {
-      currentPage++
-      indexFilmPerPage = -1
+      currentPage++;
+      indexFilmPerPage = -1;
     }
 
-    indexFilmPerPage++
-    indexFilm++
+    indexFilmPerPage++;
+    indexFilm++;
 
     // if (indexFilmPerPage < spanishMovies.length) return recursiveFunction(spanishMovies)
-    if (indexFilm < numberMovies) return recursiveFunction(spanishMovies)
+    if (indexFilm < numberMovies) return recursiveFunction(spanishMovies);
   }
-
-}
-
+};
 
 // Crear peliculas
-createFilms()
+createFilms();
