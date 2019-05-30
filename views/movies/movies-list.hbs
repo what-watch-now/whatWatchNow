@@ -1,45 +1,69 @@
 <form action="/list" method="get">
-  <select name="genre">
-    <option value="Action">Action</option>
-    <option value="Adventure">Adventure</option>
-    <option value="Animation">Animation</option>
-    <option value="Biography">Biography</option>
-    <option value="Comedy">Comedy</option>
-    <option value="Crime">Crime</option>
-    <option value="Documentry">Documentry</option>
-    <option value="Drama">Drama</option>
-    <option value="Family">Family</option>
-    <option value="Fantasy">Fantasy</option>
-    <option value="Film Noir">Film Noir</option>
-    <option value="History">History</option>
-    <option value="Horror">Horror</option>
-    <option value="Musical">Musical</option>
-    <option value="Mystery">Mistery</option>
-    <option value="Romance">Romance</option>
-    <option value="Sci-Fi">Science Fiction</option>
-    <option value="Short">Short</option>
-    <option value="Sport">Sport</option>
-    <option value="Superhero">Superhero</option>
-    <option value="Thriller">Thriller</option>
-    <option value="War">War</option>
-    <option value="Western">Western</option>
-    <option value="N/A">New</option>
-  </select>
-  <button type="submit">boton</button>
+  <div class="list-select">
+    <select name="genre">
+      <option value="Action">Action</option>
+      <option value="Adventure">Adventure</option>
+      <option value="Animation">Animation</option>
+      <option value="Biography">Biography</option>
+      <option value="Comedy">Comedy</option>
+      <option value="Crime">Crime</option>
+      <option value="Documentry">Documentry</option>
+      <option value="Drama">Drama</option>
+      <option value="Family">Family</option>
+      <option value="Fantasy">Fantasy</option>
+      <option value="Film Noir">Film Noir</option>
+      <option value="History">History</option>
+      <option value="Horror">Horror</option>
+      <option value="Musical">Musical</option>
+      <option value="Mystery">Mistery</option>
+      <option value="Romance">Romance</option>
+      <option value="Sci-Fi">Science Fiction</option>
+      <option value="Short">Short</option>
+      <option value="Sport">Sport</option>
+      <option value="Superhero">Superhero</option>
+      <option value="Thriller">Thriller</option>
+      <option value="War">War</option>
+      <option value="Western">Western</option>
+      <option value="N/A">New</option>
+    </select>
+    <button type="submit">Go</button>
+  </div>
 </form>
 
 <div id="movies-card">
+  <div class="card">
+    <a href="/detail?netflix_id={{this.netflixid}}">
+      <div class="card-image">
+        <img src="/images/bp.jpg" alt="{{this.title}} poster">
+      </div>
+      <div class="card-text">
+        <h3>Title</h3>
+        <p>hgshkghksjvhdkjfhvkjhkdfjkjdhfkjhgvkjdhfkjvndjfnvjkndfjv</p>
+        <h4>Rating</h4>
+        <p>hgshkghksjvhdkjfhvkjhkdfjkjdhfkjhgvkjdhfkjvndjfnvjkndfjv</p>
+        <h4>Sinopsis</h4>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam quibusdam sit qui autem veritatis mollitia
+          voluptatibus voluptate,
+        </p>
+      </div>
+    </a>
+  </div>
   {{#each movies}}
-  <a href="/detail?netflix_id={{this.netflixid}}">
-    <div id="image">
-      <img src="{{this.image}}" alt="{{this.title}} poster">
-    </div>
-    <h3>Titulo</h3>
-    <p>{{this.title}}</p>
-    <h4>Nota IMDB</h4>
-    <p>{{this.imdbrating}}</p>
-    <h4>Sinopsis</h4>
-    <p>{{this.synopsis}}</p>
-  </a>
+  <div class="card">
+    <a href="/detail?netflix_id={{this.netflixid}}">
+      <div class="card-image">
+        <img src="{{this.image}}" alt="{{this.title}} poster">
+      </div>
+      <div class="card-text">
+        <h3>Title</h3>
+        <p>{{this.title}}</p>
+        <h4>Rating</h4>
+        <p>{{this.imdbrating}}</p>
+        <h4>Sinopsis</h4>
+        <p>{{this.synopsis}}</p>
+      </div>
+    </a>
+  </div>
   {{/each}}
 </div>

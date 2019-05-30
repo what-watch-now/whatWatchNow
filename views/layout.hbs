@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -7,34 +7,42 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
+  {{!-- google fonts --}}
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap" rel="stylesheet">
+  {{!-- jquery --}}
 </head>
 
 <body>
+  <header class="nav-bar">
+    <a href="/">
+      <img src="/images/popcorn-icon.svg" alt="home">
+    </a>
+    <nav>
+      <ul>
+        <li>
+          {{#if_eq thisUser.userLoged 'user'}}
+          <a href="/user">User Profile</a>
+          <a href="/auth/logout">Log out</a>
+          {{/if_eq}}
+        </li>
+        <li>
 
-  {{!-- {{thisUser.userLoged}} --}}
+          {{#if_eq thisUser.userLoged 'admin'}}
+          <a href="/user">User Profile</a>
+          <a href="/admin">Admin Profile</a>
+          <a href="/auth/logout">Log out</a>
+          {{/if_eq}}
+        </li>
+        <li>
 
-
-  {{!-- <p>{{thisUser.userLoged}}</p> --}}
-  <nav>
-    <a href="/">Home</a>
-
-    {{#if_eq thisUser.userLoged 'user'}}
-    <a href="/user">User Profile</a>
-    <a href="/auth/logout">Logout</a>
-    {{/if_eq}}
-
-    {{#if_eq thisUser.userLoged 'admin'}}
-    <a href="/user">User Profile</a>
-    <a href="/admin">Admin Profile</a>
-    <a href="/auth/logout">Logout</a>
-    {{/if_eq}}
-
-    {{#if_eq thisUser.userLoged 'noLog'}}
-    <a href="/auth/signup">Signup</a>
-    <a href="/auth/login">Login</a>
-    {{/if_eq}}
-
-  </nav>
+          {{#if_eq thisUser.userLoged 'noLog'}}
+          <a href="/auth/signup">Sign up</a>
+          <a href="/auth/login">Log in</a>
+          {{/if_eq}}
+        </li>
+      </ul>
+    </nav>
+  </header>
 
 
 
@@ -47,8 +55,8 @@
       <a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a>, <a
         href="https://www.linkedin.com/showcase/ironhack-madrid-campus/" target="_blank">Ironhack</a>, <a
         href="https://www.linkedin.com/in/gabrielceb/" target="_blank">Gabriel Cebrián
-        Lucas</a>, <a href="https://www.linkedin.com/in/germancreativodigital/" target="_blank">Germán Álvarez</a> y <a
-        href="https://www.linkedin.com/in/gomezortiz/" target="_blank">David G. Ortiz</a></p>
+        Lucas</a>, <a href="https://www.linkedin.com/in/germancreativodigital/" target="_blank">Germán Álvarez</a> y
+      <a href="https://www.linkedin.com/in/gomezortiz/" target="_blank">David G. Ortiz</a></p>
   </footer>
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

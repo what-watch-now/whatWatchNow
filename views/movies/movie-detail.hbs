@@ -1,5 +1,7 @@
+{{!-- Juan --}}
+{{!-- ---------------------------------------------------------}}
 {{!-- <a href="/list?genre={{movie.genre}}">Atras</a> --}}
-<a href="javascript:history.back()">Atras</a>
+{{!-- <a href="javascript:history.back()">Atras</a>
 
 <div id="detail-img">
   <img src="{{movie.image}}" alt="{{movie.title}} poster">
@@ -22,30 +24,73 @@
   <p>{{movie.synopsis}}</p>
   <h4>Genero:</h4>
   <p>{{movie.genre}}</p>
+</div> --}}
+{{!-- ---------------------------------------------------------}}
+
+
+{{!-- Sachin --}}
+{{!-- ---------------------------------------------------------}}
+<div class="detail-page">
+  <a href="/list?genre={{movie.genre}}">
+    <button>Atras</button>
+  </a>
+  <div class="detail-movie">
+    <div class="detail-img">
+      <img src="{{movie.image}}" alt="{{movie.title}} poster">
+    </div>
+    {{!-- <div class="detail-largeimg">
+      <img src="{{movie.largeimage}}" alt="{{movie.title}} large image">
+    </div> --}}
+    <div class="detail-text">
+      <h2><span class="detail-query">Titulo: </span><span class="detail-definition">{{movie.title}}</span></h2>
+      <h3><span class="detail-query">Nota IMDB: </span><span class="detail-definition">{{movie.imdbrating}}</span></h3>
+      <h4><span class="detail-query">Genero: </span><span class="detail-definition">{{movie.genre}}</span></h4>
+      <h4><span class="detail-query">Año de lanzamiento: </span><span
+          class="detail-definition">{{movie.released}}</span></h4>
+      <h4><span class="detail-query">Duración: </span><span class="detail-definition">{{movie.runtime}}</span> </h4>
+      <h4><span class="detail-query">Sinopsis: </span><span class="detail-definition">{{movie.synopsis}}</span></h4>
+
+      {{!-- De Juan con cambios de Sachin --}}
+      {{!-- ---------------------------------------------------------}}
+      {{#if user}}
+      <div class="svg-opinion">
+        <a id="fav-button" href="/detail?netflix_id={{movie.netflixid}}">
+          <img id="favourite-img" class="unshown" src="/images/like-drawed.svg" alt="Favourite-drawed">
+          <img id="no-favourite-img" class="shown" src="/images/like.svg" alt="Favourite">
+        </a>
+        <a id="black-button" href="/detail?netflix_id={{movie.netflixid}}">
+          <img id="black-img" class="unshown" src="/images/poop-drawed.svg" alt="Blacklist-drawed">
+          <img id="no-black-img" class="shown" src="/images/poop.svg" alt="Blacklist">
+        </a>
+        <a id="view-button" href="/detail?netflix_id={{movie.netflixid}}">
+          <img id="view-img" class="unshown" src="/images/view-drawed.svg" alt="View-drawed">
+          <img id="no-view-img" class="shown" src="/images/view.svg" alt="View">
+        </a>
+      </div>
+      {{/if}}
+
+      <script>
+        const movieID = {{{ movie.netflixid }}}
+        const movie = {{{ movieJSON }}}
+
+      </script>
+      {{!-- ---------------------------------------------------------}}
+
+    </div>
+  </div>
 </div>
+{{!-- ---------------------------------------------------------}}
 
-{{#if user}}
-<div id="svg-opinion">
-  <a id="fav-button" href="/detail?netflix_id={{movie.netflixid}}">
-    {{#if filmAdded}}
-    <img id="favourite-img" src="/images/like-drawed.svg" alt="Favourite-drawed">
-    {{else}}
-    <img id="no-favourite-img" src="/images/like.svg" alt="Favourite">
-    {{/if}}
-  </a>
-  <a id="black-button" href="/detail?netflix_id={{movie.netflixid}}">
-    <img id="black-img" class="unshown" src="/images/poop-drawed.svg" alt="Blacklist-drawed">
-    <img id="no-black-img" class="shown" src="/images/poop.svg" alt="Blacklist">
-  </a>
-  <a id="view-button" href="/detail?netflix_id={{movie.netflixid}}">
-    <img id="view-img" class="unshown" src="/images/view-drawed.svg" alt="View-drawed">
-    <img id="no-view-img" class="shown" src="/images/view.svg" alt="View">
-  </a>
-</div>
-{{/if}}
 
-<script>
-  const movieID = {{{ movie.netflixid }}}
-  const movie = {{{ movieJSON }}}
 
-</script>
+{{!-- Sachin --}}
+{{!-- ---------------------------------------------------------}}
+{{!--  <div class="svg-opinion">
+        <img src="/images/like.svg" alt="Like">
+        <img src="/images/poop-1.svg" alt="Blacklist">
+        <img src="/images/view.svg" alt="View">
+      </div>
+    </div>
+  </div>
+</div> --}}
+{{!-- ---------------------------------------------------------}}
