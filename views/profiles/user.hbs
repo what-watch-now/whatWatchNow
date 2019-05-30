@@ -3,10 +3,12 @@
 {{!-- <a href="">Admin Page</a> --}}
 {{!-- {{/if}} --}}
 
+<a href="javascript:history.back()">Atras</a>
+
 
 <h2>Favoritos</h2>
 <div id="user-Favorite">
-  <img src="/images/like-1.svg" alt="like">
+  <img src="/images/like-drawed.svg" alt="like">
   {{#each favList}}
   <a href="/detail?netflix_id={{netflixid}}"><img src="{{image}}" alt="{{title}} poster"></a>
   {{/each}}
@@ -15,15 +17,16 @@
 
 <h2>Blacklist</h2>
 <div id="user-Blacklist">
-  <img src="/images/poop.svg" alt="like">
+  <img src="/images/poop-drawed.svg" alt="like">
   {{#each blackList}}
   <a href="/detail?netflix_id={{netflixid}}"><img src="{{image}}" alt="{{title}} poster"></a>
   {{/each}}
 </div>
 
+
 <h2>Pelilculas vistas</h2>
 <div id="user-viewed">
-  <img src="/images/view-1.svg" alt="like">
+  <img src="/images/view-drawed.svg" alt="like">
   {{#each viewList}}
   <a href="/detail?netflix_id={{netflixid}}"><img src="{{image}}" alt="{{title}} poster"></a>
   {{/each}}

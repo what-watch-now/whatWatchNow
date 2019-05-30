@@ -50,9 +50,8 @@ router.get('/update-favouriteList', (req, res, next) => {
         console.log('Guardando favorito')
         User.findByIdAndUpdate({ _id: req.user._id }, { $push: { favList: theMovie._id } }, { new: true })
           .then(userUpdated => {
-            console.log(userUpdated)
             // TODO: Preguntar a Gabi wtf es esto.
-            res.json({ msg: 'OK' })
+            res.json({ msg: 'OK', isAdded: true })
           })
           .catch(error => console.log(error))
 
@@ -62,7 +61,7 @@ router.get('/update-favouriteList', (req, res, next) => {
           .then(userUpdated => {
             console.log(userUpdated)
             // TODO: Preguntar a Gabi wtf es esto.
-            res.json({ msg: 'OK' })
+            res.json({ msg: 'OK', isAdded: false })
           })
           .catch(error => console.log(error))
       }

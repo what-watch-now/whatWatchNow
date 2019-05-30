@@ -1,2 +1,7 @@
+.shown {
+  display: block; }
+
+.unshown {
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */

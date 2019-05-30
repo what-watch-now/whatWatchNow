@@ -17,8 +17,17 @@ router.get('/list', (req, res, next) => {
 router.get('/detail', (req, res, next) => {
   Movie.findOne({ netflixid: req.query.netflix_id })
     .then(theMovie => {
-      // console.log(theMovie)
-      res.render('movies/movie-detail', { movie: theMovie })
+      let filmAdded = false
+      if (req.user.favList.includes(theMovie._id))
+        filmAdded = true
+
+      res.render('movies/movie-detail', {
+        user: req.user,
+        movie: theMovie,
+        movieJSON: JSON.stringify(theMovie),
+
+        filmAdded
+      })
     })
     .catch(error => console.log(error))
 })

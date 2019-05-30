@@ -24,18 +24,28 @@
   <p>{{movie.genre}}</p>
 </div>
 
+{{#if user}}
 <div id="svg-opinion">
   <a id="fav-button" href="/detail?netflix_id={{movie.netflixid}}">
-    <img src="/images/like.svg" alt="Favourite">
+    {{#if filmAdded}}
+    <img id="favourite-img" src="/images/like-drawed.svg" alt="Favourite-drawed">
+    {{else}}
+    <img id="no-favourite-img" src="/images/like.svg" alt="Favourite">
+    {{/if}}
   </a>
   <a id="black-button" href="/detail?netflix_id={{movie.netflixid}}">
-    <img src="/images/poop-1.svg" alt="Blacklist">
+    <img id="black-img" class="unshown" src="/images/poop-drawed.svg" alt="Blacklist-drawed">
+    <img id="no-black-img" class="shown" src="/images/poop.svg" alt="Blacklist">
   </a>
   <a id="view-button" href="/detail?netflix_id={{movie.netflixid}}">
-    <img src="/images/view-1.svg" alt="View">
+    <img id="view-img" class="unshown" src="/images/view-drawed.svg" alt="View-drawed">
+    <img id="no-view-img" class="shown" src="/images/view.svg" alt="View">
   </a>
 </div>
+{{/if}}
 
 <script>
   const movieID = {{{ movie.netflixid }}}
+  const movie = {{{ movieJSON }}}
+
 </script>
