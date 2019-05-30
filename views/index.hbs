@@ -36,7 +36,28 @@
   </div>
 </form>
 
+
+
+
 {{!-- <form action="/" method="POST">
    <input type="text" placeholder="Search by Name.." name="search">
    <button type="submit">search</button>
 </form> --}}
+
+<h2>Recomended List</h2>
+
+<div class="carousel">
+  <div class="holder">
+    {{#each nombre}}
+    <img src="{{this.image}}" alt="{{this.title}} poster" class="carousel-img">
+    {{/each}}
+  </div>
+</div>
+
+
+
+
+
+
+{{!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> --}}

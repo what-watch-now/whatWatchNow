@@ -1,21 +1,21 @@
 body {
   padding: 0px;
   margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Montserrat", sans-serif;
   background: linear-gradient(
     to right top,
-    #27005a,
-    #310041,
-    #30002d,
-    #28001d,
-    #1e0010,
-    #230515,
-    #28091a,
-    #2e0b1e,
-    #490637,
-    #5f0157,
-    #70057f,
-    #741cae
+    #2e2e2e,
+    #292929,
+    #232323,
+    #1e1e1e,
+    #191919,
+    #181818,
+    #171717,
+    #161616,
+    #191919,
+    #1c1c1c,
+    #202020,
+    #232323
   );
   background-repeat: no-repeat;
   height: 100vh;
@@ -39,7 +39,7 @@ body {
   font-size: 1.25em;
   text-decoration: none;
   padding: 10px 5px;
-  // display: block;
+
   color: white;
 }
 .nav-bar img {
@@ -47,63 +47,11 @@ body {
   margin: 5px 10px;
 }
 //-------Header with navbar ends here--------//
-//-------Genre Select Index bar starts here--------//
-.index-select select {
-  -webkit-appearance: button;
-  border-radius: 2px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-  -webkit-padding-end: 20px;
-  -webkit-padding-start: 2px;
-  user-select: none;
-  background-image: url(http://i62.tinypic.com/15xvbd5.png),
-    linear-gradient(
-      to bottom,
-      #27005a,
-      #310041,
-      #30002d,
-      #28001d,
-      #1e0010,
-      #18000a,
-      #0e0004,
-      #000000,
-      #000000,
-      #000000,
-      #000000,
-      #000000
-    );
-  background-position: 97% center;
-  background-repeat: no-repeat;
-  border: 1px solid #aaa;
-  color: rgb(255, 255, 255);
-  font-size: 3em;
-  height: 1.4em;
-  overflow: hidden;
-  padding: 5px 10px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 20em;
-  display: block;
-  margin: 0 auto;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 300;
-}
-.index-select option {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 300;
-  color: black;
-}
-.index-select {
-  text-align: center;
-}
-.index-select button {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 400;
-  text-align: center;
-  color: white;
-  font-size: 1.5em;
-  padding: 0.5em 2em;
-  margin-top: 20px;
-  border: 1px;
+//
+//-------Orange yellow gradient starts here--------//
+.index-select button,
+.index-title h1,
+.list-select button {
   background-image: linear-gradient(
     to bottom,
     #ffbe06,
@@ -120,42 +68,203 @@ body {
     #ff4200
   );
 }
-//-------Genre Select Index bar & button ends here--------//
+//-------Orange yellow gradient ends here--------//
+//
+//-------Black Grey gradient starts here--------//
+.index-select select,
+.list-select select {
+  background-image: url(http://i62.tinypic.com/15xvbd5.png),
+    linear-gradient(
+      to bottom,
+      #2e2e2e,
+      #292929,
+      #232323,
+      #1e1e1e,
+      #191919,
+      #181818,
+      #171717,
+      #161616,
+      #191919,
+      #1c1c1c,
+      #202020,
+      #232323
+    );
+}
+//-------Black Grey gradient ends here--------//
+//
+//-------Text align center starts here--------//
+.index-select,
+.index-select button,
+.index-title,
+footer {
+  text-align: center;
+}
+//-------Text align center ends here--------//
+//
+//-------display block starts here--------//
+.index-select select,
+.list-select select {
+  display: block;
+}
+//-------display block ends here--------//
+//
+//-------Genre Select Index bar starts here--------//
+.index-select select {
+  -webkit-appearance: button;
+  border-radius: 5px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-padding-end: 20px;
+  -webkit-padding-start: 2px;
+  user-select: none;
+
+  background-position: 97% center;
+  background-repeat: no-repeat;
+  border: 1px solid #aaa;
+  color: rgb(255, 255, 255);
+  font-size: 3em;
+  height: 1.4em;
+  overflow: hidden;
+  padding: 5px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 20em;
+
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+}
+.index-select option {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  color: black;
+}
+
+.index-select button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: white;
+  font-size: 1.5em;
+  padding: 0.5em 2em;
+  margin-top: 20px;
+  border: 1px;
+}
+//-------Genre Select Index bar & button starts here--------//
 .index-title h1 {
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
   font-size: 5em;
-  background: linear-gradient(
-    to right bottom,
-    #ffbe06,
-    #ffad00,
-    #ff9c00,
-    #ff8a00,
-    #ff7800,
-    #ff6e00,
-    #ff6301,
-    #ff5704,
-    #ff5203,
-    #ff4d01,
-    #ff4801,
-    #ff4200
-  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.index-title {
-  text-align: center;
-}
+
 .index-title img {
   height: 1em;
 }
+// -----Genre select index bar & button ends here----//
+//
+//-------movie-list starts here--------//
+
+#movies-card {
+  display: flex;
+  max-width: 1599px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+  // background-color: #000;
+  background-image: linear-gradient(
+    to right bottom,
+    #2e2e2e,
+    #292929,
+    #232323,
+    #1e1e1e,
+    #191919,
+    #181818,
+    #171717,
+    #161616,
+    #191919,
+    #1c1c1c,
+    #202020,
+    #232323
+  );
+  // border: #2e2e2e;
+  // border-width: 2px;
+  padding: 5px;
+  border-radius: 5px;
+  min-width: 200px;
+  max-width: 600px;
+  margin-top: 50px;
+}
+.card-image img {
+  height: 250px;
+}
+.card a {
+  text-decoration: none;
+  color: whitesmoke;
+  display: flex;
+}
+.card-text h4,
+.card-text h3,
+.card-text p {
+  text-align: left;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+.card-text h4,
+.card-text h3 {
+  margin: 1em;
+}
+.list-select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.list-select select {
+  -webkit-appearance: button;
+  border-radius: 5px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-padding-end: 20px;
+  -webkit-padding-start: 2px;
+  user-select: none;
+  background-position: 97% center;
+  background-repeat: no-repeat;
+  border: 1px solid #aaa;
+  color: white;
+  font-size: 2em;
+  height: 1.4em;
+  overflow: hidden;
+  padding: 5px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 20em;
+  margin: 0 15px 0 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+}
+.list-select option {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  color: black;
+}
+.list-select button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: white;
+  font-size: 1.5em;
+  padding: 0.3em 1em;
+  border: 1px;
+  border-radius: 5px;
+}
+// -----movie.list ends here----//
+
 #index-form {
   margin: 1em;
   padding: 0, 2em;
 }
-a {
-  color: greenyellow;
-}
+// a {
+//   color: greenyellow;
+// }
 footer {
   background-color: black;
   // background-size:
@@ -163,9 +272,59 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  text-align: center;
 }
 footer a {
   text-decoration: none;
   color: greenyellow;
+}
+//
+//
+//
+//
+//
+//
+//
+//
+@import url(https://fonts.googleapis.com/css?family=PT+Sans);
+
+.carousel-img {
+  display: inline-block;
+  width: 200px;
+  height: 100px;
+}
+
+.carousel {
+  width: 830px;
+  height: 120px;
+  overflow: hidden;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 2px solid #999;
+  box-shadow: 0 0 4px #000;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.holder {
+  animation: carousel 25s linear infinite;
+  white-space: nowrap;
+  will-change: transform;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes carousel {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
