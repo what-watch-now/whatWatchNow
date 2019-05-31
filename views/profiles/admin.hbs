@@ -23,14 +23,24 @@
   </div>
 </div>
 
+{{!-- <h2>Edit Delete Movie</h2>
+<div id="movie-edit">
+  solo pasar de 20 en 20 las peliculas
+{{#each movie}}
+{{movie.title}}
+<a href="??">Edit</a>
+<a href="??">Delete</a>
+{{/each}} --}}
 <div class="admin-delete">
-  <h2>Delete Movie</h2>
+  <div class="admin-delete-h2">
+    <h2>Borrar Pelicula</h2>
+  </div>
   <div class="admin-movie-delete">
-    <form action="/delete" method="post">
-      <p><label>Netflix id: </label><input type="text" name="netflixid"></p>
-      <div class="admin-delete-button">
+    <div id="clear-movie">
+      <form action="/movie/delete" method="post">
+        <p><label>Netflix id: </label><input type="text" name="netflixid"></p>
         <button type="submit">Clear</button>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>

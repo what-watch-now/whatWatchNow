@@ -320,21 +320,37 @@ footer {
       border: 1px;
       border-radius: 5px; }
 
-.admin-delete button {
-  margin-left: 40px;
-  padding: 12px 30px;
-  background-image: linear-gradient(to bottom, #ffbe06, #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
-  border: 1px;
-  border-radius: 5px;
-  margin-bottom: 80px; }
-
-.admin-delete form {
-  display: inline; }
+.admin-delete {
+  margin-bottom: 100px;
+  text-align: center; }
+  .admin-delete h2 {
+    font-size: 2.2em;
+    font-weight: 300; }
+  .admin-delete form {
+    margin-left: 22em;
+    display: flex;
+    align-items: center; }
+  .admin-delete button,
+  .admin-delete input {
+    margin-left: 20px; }
+  .admin-delete input {
+    padding: 12px 20px;
+    margin: 8px 0 8px 5px;
+    border-radius: 5px; }
+  .admin-delete button {
+    margin-left: 40px;
+    padding: 0 30px;
+    background-image: linear-gradient(to bottom, #ffbe06, #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
+    border: 1px;
+    border-radius: 5px;
+    height: 3.333333em; }
+  .admin-delete .admin-movie-delete {
+    display: inline; }
 
 footer {
   background-color: black;
   color: white;
-  position: fixed;
+  padding: 10px 0;
   bottom: 0;
   width: 100%; }
 
@@ -353,7 +369,7 @@ footer a {
   overflow: hidden;
   padding: 8px;
   border: 1px;
-  margin: 50px auto;
+  margin: 50px auto 0 auto;
   border-radius: 5px; }
 
 .holder {
