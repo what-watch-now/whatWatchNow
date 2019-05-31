@@ -1,10 +1,9 @@
-const express = require('express')
-const router = express.Router()
-const Movie = require('../models/Movie.model')
-
+const express = require("express");
+const router = express.Router();
+const Movie = require("../models/Movie.model");
 
 // Movies list
-router.get('/list', (req, res, next) => {
+router.get("/list", (req, res, next) => {
   Movie.find({ genre: { $regex: req.query.genre } })
     .where({ "imdbrating": { "$ne": "N/A" } })
     .sort({ 'imdbrating': -1 }).limit(100)
@@ -16,12 +15,12 @@ router.get('/list', (req, res, next) => {
 
 
 // Movie Detail
-router.get('/detail', (req, res, next) => {
+router.get("/detail", (req, res, next) => {
   Movie.findOne({ netflixid: req.query.netflix_id })
     .then(theMovie => {
-      let favouriteAdded = false
-      let blackAdded = false
-      let viewAdded = false
+      let favouriteAdded = false;
+      let blackAdded = false;
+      let viewAdded = false;
 
       if (req.user) {
         if (req.user.favList.includes(theMovie._id))
@@ -32,19 +31,17 @@ router.get('/detail', (req, res, next) => {
           viewAdded = true
       }
 
-
-      res.render('movies/movie-detail', {
+      res.render("movies/movie-detail", {
         user: req.user,
         movie: theMovie,
         // movieJSON: JSON.stringify(theMovie),
         favouriteAdded,
         blackAdded,
         viewAdded
-      })
+      });
     })
-    .catch(error => console.log(error))
-})
-
+    .catch(error => console.log(error));
+});
 
 
 module.exports = router;

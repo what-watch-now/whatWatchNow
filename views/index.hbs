@@ -37,19 +37,19 @@
 </form>
 
 
-
+{{!-- imagenes random para el carusel  --}}
 
 {{!-- <form action="/" method="POST">
    <input type="text" placeholder="Search by Name.." name="search">
    <button type="submit">search</button>
 </form> --}}
-
-<h2>Recomended List</h2>
-
+{{!-- <div class="index-carusel-headder">
+  <h2>Recomended List</h2>
+</div> --}}
 <div class="carousel">
   <div class="holder">
-    {{#each nombre}}
-    <img src="{{this.image}}" alt="{{this.title}} poster" class="carousel-img">
+    {{#each randomMovies}}
+    <img src="{{image}}" alt="{{randomMovies.title}}" class="carousel-img">
     {{/each}}
   </div>
 </div>

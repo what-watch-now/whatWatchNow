@@ -75,6 +75,9 @@ body {
   text-transform: uppercase;
   align-items: center;
 }
+.nav-icon {
+  margin: 10px 0 0 10px;
+}
 .nav-bar ul {
   text-decoration: none;
   margin: 0 10px 0 0;
@@ -166,6 +169,14 @@ footer {
 .index-title img {
   height: 1em;
 }
+// .index-carusel-headder {
+//   margin-top: 50px;
+//   text-align: center;
+//   h2 {
+//     font-size: 2em;
+//     font-weight: 300;
+//   }
+// }
 //
 //
 //-------movie-list starts here--------//
@@ -175,7 +186,18 @@ footer {
   flex-wrap: wrap;
   justify-content: space-around;
 }
-
+.second-header {
+  text-align: center;
+  margin-top: -60px;
+  h2 {
+    background-image: $orangeGradient;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    font-size: 2.5em;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
 .card {
   background-image: $blackGradient;
   padding: 5px;
@@ -198,6 +220,9 @@ footer {
   text-align: left;
   margin-block-start: 0;
   margin-block-end: 0;
+}
+.card-text p {
+  margin-left: 10px;
 }
 .card-text h4,
 .card-text h3 {
@@ -250,10 +275,13 @@ footer {
 //
 //-------movie-detail starts here--------//
 .detail-page {
+  margin-top: -10px;
   a {
     text-decoration: none;
     color: white;
-    button {
+    .button {
+      margin-left: 13px;
+      width: 38px;
       background-image: $orangeGradient;
       font-family: "Montserrat", sans-serif;
       font-weight: 300;
@@ -276,6 +304,7 @@ footer {
       margin-top: 50px;
       margin-left: 50px;
       height: 500px;
+      border-radius: 5px;
     }
     .svg-opinion {
       margin-top: 45px;
@@ -283,7 +312,6 @@ footer {
       justify-content: space-around;
       img {
         height: 6em;
-        // margin-left: 30px;
       }
     }
     .detail-text {
@@ -320,15 +348,6 @@ footer {
 .signup {
   margin: 150px 40vw;
   text-align: center;
-  // .signup-background {
-  //   background-image: url(/images/popcorn.svg);
-
-  //   background-repeat: no-repeat;
-
-  //   height: 60vh;
-  //   width: 80vw;
-  //   background-size: cover;
-  // }
   .signup-username,
   .signup-password {
     margin-bottom: 50px;
@@ -368,13 +387,87 @@ footer {
     font-weight: 300;
   }
 }
-// #index-form {
-//   margin: 1em;
-//   padding: 0, 2em;
-// }
+//
+//
+//-------user starts here--------//
+.user {
+  #user-Favorite,
+  #user-Blacklist,
+  #user-viewed {
+    display: flex;
+    align-items: center;
+  }
+  .user-imgList {
+    display: flex;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .button {
+    margin-left: 13px;
+    width: 38px;
+    background-image: $orangeGradient;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    color: white;
+    font-size: 1em;
+    padding: 0.25em 1em;
+    margin-top: 10px;
+    border: 1px;
+    border-radius: 5px;
+  }
+  .user-img img {
+    margin-left: 3em;
+    border-radius: 5px;
+    height: 150px;
+  }
+  .user-svg img {
+    width: 6em;
+  }
+  h2 {
+    margin-left: 6em;
+  }
+}
+//
+//
+//-------user starts here--------//
+.admin-add {
+  text-align: center;
+  h2 {
+    font-size: 2.2em;
+    font-weight: 300;
+  }
+  form {
+    display: flex;
+    max-height: 600px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin-right: 20vw;
+    input {
+      padding: 12px 20px;
+      margin: 8px 0 8px 5px;
+      border-radius: 5px;
+    }
+    .admin-button {
+      display: flex;
+      flex-direction: row;
+    }
+    button {
+      margin-left: 40px;
+      padding: 12px 30px;
+      background-image: $orangeGradient;
+      border: 1px;
+      border-radius: 5px;
+    }
+  }
+}
 footer {
   background-color: black;
-  // background-size:
   color: white;
   position: absolute;
   bottom: 0;
@@ -384,6 +477,7 @@ footer a {
   text-decoration: none;
   color: greenyellow;
 }
+
 //
 //
 //
@@ -396,19 +490,21 @@ footer a {
 
 .carousel-img {
   display: inline-block;
-  width: 200px;
-  height: 100px;
+  // width: 150px;
+  height: 250px;
+  margin-right: 5px;
 }
 
 .carousel {
-  width: 830px;
-  height: 120px;
+  width: 100%;
+  height: 270px;
   overflow: hidden;
   padding: 8px;
-  box-sizing: border-box;
-  border: 2px solid #999;
-  box-shadow: 0 0 4px #000;
-  margin: 0 auto;
+  // box-sizing: border-box;
+  border: 1px;
+  // border: 1px solid #999;
+  // box-shadow: 0 0 4px #000;
+  margin: 50px auto;
   border-radius: 5px;
 }
 
