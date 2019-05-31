@@ -41,10 +41,6 @@ router.get('/admin', [ensureAuthenticated, checkAdmin], (req, res, next) => {
 
 
 
-
-
-
-
 // update favourites list
 router.get('/update-favouriteList', (req, res, next) => {
 
@@ -73,7 +69,6 @@ router.get('/update-favouriteList', (req, res, next) => {
 
     .catch(error => console.log(error))
 })
-
 
 
 

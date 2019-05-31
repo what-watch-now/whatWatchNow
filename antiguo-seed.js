@@ -16,7 +16,7 @@ mongoose
   })
   .catch(err => {
     console.error('Error connecting to mongo', err)
-  });
+  })
 
 let users = [
   {
@@ -37,6 +37,9 @@ let users = [
   }
 ]
 
+
+
+
 User.deleteMany()
   .then(() => {
     return User.create(users)
@@ -53,7 +56,6 @@ User.deleteMany()
     // mongoose.disconnect()
     throw err
   })
-
 
 
 

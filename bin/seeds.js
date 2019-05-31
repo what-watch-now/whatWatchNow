@@ -6,21 +6,234 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const User = require("../models/User.model");
+require("dotenv").config()
 
 const bcryptSalt = 10;
 
 mongoose
-  .connect('mongodb://localhost/wwn', { useNewUrlParser: true })
+  .connect(process.env.DB, { useNewUrlParser: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
+
+    const Movie = require('../models/Movie.model')
+
+    const ApiHandler = require('./handler')
+    const unogsApi = new ApiHandler('https://unogs-unogs-v1.p.rapidapi.com/aaapi.cgi')
+    const SpainCode = 270
+    const typeMedia = 'movie'
+    let indexFilmPerPage = 0
+    let currentPage = 0
+    let indexFilm = 0
+    let lastPage = false
+
+
+    const createFilms = (currentPage) => {
+      return unogsApi.getFilms(SpainCode, typeMedia, currentPage)
+        .then(spanishMovies => spanishMovies)
+        .catch(error => console.log(error))
+    }
+
+    const getImdbInformation = imdbId => {
+      return unogsApi.getImdbInfo(imdbId)
+        .then(imdbInfo => imdbInfo)
+        .catch(error => console.log(error))
+    }
+
+    const getLargeImage = (netflixId) => {
+      return unogsApi.getImages(netflixId)
+        .then(image => image)
+        .catch(error => console.log(error))
+    }
+
+    const movieUpdate = movie => {
+      return Movie.create(movie)
+        .then(moviesCreated => {
+          console.log(`Creada una pelicula`)
+        })
+        .catch(err => console.log(`Hubo un error: ${err}`))
+    }
+
+
+
+    // const numberMovies = 10
+    const recursiveFunction = spanishMovies => {
+
+      const numberMovies = spanishMovies.length
+      console.log(indexFilmPerPage)
+      const currentFilm = spanishMovies[indexFilmPerPage]
+
+      if (currentFilm.type === 'movie' && currentFilm.imdbid) {
+
+        console.log(indexFilmPerPage, 'Pelicula----------------------------------------')
+
+        getImdbInformation(currentFilm.imdbid)
+          // unogsApi.getImdbInfo(currentFilm.imdbid)
+          .then(imdbInfo => {
+            if (imdbInfo) {
+              currentFilm.imdbrating = imdbInfo.imdbrating
+              currentFilm.genre = imdbInfo.genre
+            }
+            else currentFilm.imdbrating = 'N/A'
+
+
+            getLargeImage(currentFilm.netflixid)
+              .then(largeImage => {
+                if (largeImage) currentFilm.largeimage = largeImage
+
+                // Introducir pelicula en base de datos
+                movieUpdate(currentFilm)
+                  .then(() => {
+                    console.log(indexFilmPerPage, numberMovies)
+
+                    if (indexFilmPerPage < numberMovies) {
+
+                      indexFilmPerPage++
+                      indexFilm++
+                      if (indexFilmPerPage == 100) {
+                        if (lastPage) {
+                          mongoose.connection.close()
+                          return
+                        }
+                        indexFilmPerPage = 0
+                        currentPage++
+                        createFilms(currentPage)
+                          .then(spanishMovies => {
+                            if (spanishMovies.length == 100) {
+                              recursiveFunction(spanishMovies)
+                            } else if (spanishMovies.length == 0) {
+                              mongoose.connection.close()
+                              return
+                            } else {
+                              lastPage = true
+                              recursiveFunction(spanishMovies)
+                            }
+
+                          })
+                          .catch(error => console.log(error))
+                      } else {
+                        recursiveFunction(spanishMovies)
+                      }
+
+                    }
+
+                    // else {
+                    //   console.log('entras-------------------------------------------------')
+                    //   if (lastPage) {
+                    //     mongoose.connection.close()
+                    //     return
+                    //   }
+
+                    //   indexFilmPerPage = 0
+                    //   indexFilm++
+                    //   currentPage++
+                    //   // Traer nuevas peliculas
+                    //   createFilms(currentPage)
+                    //     .then(spanishMovies => {
+                    //       if (spanishMovies.length == 100) {
+                    //         recursiveFunction(spanishMovies)
+                    //       } else if (spanishMovies.length == 0) {
+                    //         mongoose.connection.close()
+                    //         return
+                    //       } else {
+                    //         lastPage = true
+                    //         recursiveFunction(spanishMovies)
+                    //       }
+
+                    //     })
+                    //     .catch(error => console.log(error))
+                    // }
+
+                  })
+
+
+              })
+              .catch(error => console.log(error))
+          })
+          .catch(error => console.log(error))
+
+
+
+      } else {
+
+        console.log(indexFilmPerPage, 'Serie----------------------------------------')
+
+        if (indexFilmPerPage < numberMovies - 1) {
+
+          indexFilmPerPage++
+          indexFilm++
+          recursiveFunction(spanishMovies)
+
+        } else {
+
+          if (lastPage) {
+            mongoose.connection.close()
+            return
+          }
+
+          indexFilmPerPage = 0
+          indexFilm++
+          currentPage++
+          // Traer nuevas peliculas
+          createFilms(currentPage)
+            .then(spanishMovies => {
+              if (spanishMovies.length == 100) {
+                recursiveFunction(spanishMovies)
+              } else if (spanishMovies.length == 0) {
+                mongoose.connection.close()
+                return
+              } else {
+                lastPage = true
+                recursiveFunction(spanishMovies)
+              }
+
+            })
+            .catch(error => console.log(error))
+        }
+
+      }
+    }
+    // else {
+    //   console.log('entras-------------------------------------------------')
+    //   if (lastPage) {
+    //     mongoose.connection.close()
+    //     return
+    //   }
+
+    //   indexFilmPerPage = 0
+    //   indexFilm++
+    //   currentPage++
+    //   // Traer nuevas peliculas
+    //   createFilms(currentPage)
+    //     .then(spanishMovies => {
+    //       if (spanishMovies.length == 100) {
+    //         recursiveFunction(spanishMovies)
+    //       } else if (spanishMovies.length == 0) {
+    //         mongoose.connection.close()
+    //         return
+    //       } else {
+    //         lastPage = true
+    //         recursiveFunction(spanishMovies)
+    //       }
+
+    //     })
+    //     .catch(error => console.log(error))
+    // }
+
+
+    // Crear peliculas
+    createFilms(currentPage)
+      .then(spanishMovies => {
+        if (spanishMovies.length == 100)
+          recursiveFunction(spanishMovies)
+      })
+      .catch(error => console.log(error))
+
   })
-  .catch(err => {
-    console.error('Error connecting to mongo', err)
-  });
+  .catch(err => console.error('Error connecting to mongo', err))
 
 
 
-/*  
+/*
 // Users
 
 let users = [
@@ -64,115 +277,3 @@ User.deleteMany()
 
 
 // Movies
-
-const Movie = require('../models/Movie.model')
-
-const ApiHandler = require('./handler')
-const unogsApi = new ApiHandler('https://unogs-unogs-v1.p.rapidapi.com/aaapi.cgi')
-const SpainCode = 270
-const typeMedia = 'movie'
-let indexFilmPerPage = 0
-let currentPage = 1
-let indexFilm = 0
-
-
-const createFilms = () => {
-  unogsApi.getFilms(SpainCode, typeMedia, currentPage)
-    .then(spanishMovies => recursiveFunction(spanishMovies))
-    .catch(error => console.log(error))
-}
-
-const getImdbInformation = imdbId => {
-  return unogsApi.getImdbInfo(imdbId)
-    .then(imdbInfo => imdbInfo)
-    .catch(error => console.log(error))
-}
-
-const getLargeImage = (netflixId) => {
-  return unogsApi.getImages(netflixId)
-    .then(image => image)
-    .catch(error => console.log(error))
-}
-
-const movieUpdate = movie => {
-  Movie.create(movie)
-    .then(moviesCreated => {
-      console.log(`Creada una pelicula`)
-    })
-    .catch(err => console.log(`Hubo un error: ${err}`))
-}
-
-
-
-const recursiveFunction = spanishMovies => {
-  // const numberMovies = spanishMovies.length
-  const numberMovies = 10
-
-  // const currentFilm = spanishMovies.type[indexFilmPerPage]
-  const currentFilm = spanishMovies[indexFilmPerPage]
-  // console.log(indexFilmPerPage)
-  // console.log(currentFilm)
-  if (currentFilm.type === 'movie' && typeof currentFilm.imdbid) {
-
-    console.log(indexFilmPerPage, '----------------------------------------')
-
-    getImdbInformation(currentFilm.imdbid)
-      // unogsApi.getImdbInfo(currentFilm.imdbid)
-      .then(imdbInfo => {
-        if (imdbInfo) {
-          currentFilm.imdbrating = imdbInfo.imdbrating
-          currentFilm.genre = imdbInfo.genre
-        }
-        else currentFilm.imdbrating = 'N/A'
-
-
-        getLargeImage(currentFilm.netflixid)
-          .then(largeImage => {
-            if (largeImage) currentFilm.largeimage = largeImage
-
-
-            // console.log(currentFilm)
-            movieUpdate(currentFilm)
-
-
-
-            if (indexFilmPerPage == 99) {
-              currentPage++
-              indexFilmPerPage = -1
-            }
-
-            indexFilmPerPage++
-            indexFilm++
-
-            if (indexFilm < numberMovies) {
-              recursiveFunction(spanishMovies)
-            }
-
-          })
-          .catch(error => console.log(error))
-      })
-      .catch(error => console.log(error))
-
-
-  } else {
-
-    console.log(indexFilmPerPage, '----------------------------------------')
-    console.log('Esto es una Serie')
-
-    if (indexFilmPerPage == 99) {
-      currentPage++
-      indexFilmPerPage = -1
-    }
-
-    indexFilmPerPage++
-    indexFilm++
-
-    // if (indexFilmPerPage < spanishMovies.length) return recursiveFunction(spanishMovies)
-    if (indexFilm < numberMovies) return recursiveFunction(spanishMovies)
-  }
-
-}
-
-
-// Crear peliculas
-createFilms()

@@ -30,9 +30,12 @@
   </div>
 </form>
 
+
+
 <div id="movies-card">
 
   {{#each movies}}
+
   <div class="card">
     <a href="/detail?netflix_id={{this.netflixid}}">
       <div class="card-image">
@@ -48,5 +51,7 @@
       </div>
     </a>
   </div>
+
   {{/each}}
+
 </div>

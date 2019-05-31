@@ -6,10 +6,10 @@ const Movie = require('../models/Movie.model')
 // Movies list
 router.get('/list', (req, res, next) => {
   Movie.find({ genre: { $regex: req.query.genre } })
-    .then(MoviesByGenre => {
-      // console.log(MoviesByGenre)
-      res.render('movies/movies-list', { movies: MoviesByGenre })
-    })
+    .where({ "imdbrating": { "$ne": "N/A" } })
+    .sort({ 'imdbrating': -1 }).limit(100)
+
+    .then(MoviesByGenre => res.render('movies/movies-list', { movies: MoviesByGenre }))
     .catch(error => console.log(error))
 })
 
@@ -23,12 +23,14 @@ router.get('/detail', (req, res, next) => {
       let blackAdded = false
       let viewAdded = false
 
-      if (req.user.favList.includes(theMovie._id))
-        favouriteAdded = true
-      if (req.user.blackList.includes(theMovie._id))
-        blackAdded = true
-      if (req.user.viewList.includes(theMovie._id))
-        viewAdded = true
+      if (req.user) {
+        if (req.user.favList.includes(theMovie._id))
+          favouriteAdded = true
+        if (req.user.blackList.includes(theMovie._id))
+          blackAdded = true
+        if (req.user.viewList.includes(theMovie._id))
+          viewAdded = true
+      }
 
 
       res.render('movies/movie-detail', {
