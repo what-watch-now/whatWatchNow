@@ -8,7 +8,8 @@
   <a href="??">Delete</a>
   {{/each}}
 </div>
-<h2>Add Movie</h2>
+
+<h2>Añadir/Editar Pelicula</h2>
 <div id="movie-add">
   <form action="/movie/add" method="post">
     <label>netflixid:</label>
@@ -18,7 +19,7 @@
     <label>Image:</label>
     <input type="text" name="image">
     <label>Synopsis:</label>
-    <input type="text" name="synopsis">
+    <input type="text" name="synopsis">movie-add
     <label>Rating:</label>
     <input type="text" name="rating">
     <label>Type:</label>
@@ -35,10 +36,23 @@
     <input type="text" name="download">
     <label>imdbrating:</label>
     <input type="text" name="imdbrating">
-    <button type="submit">Add</button>
-    <button type="reset">Clear</button>
+    <button type="submit">Añadir</button>
+    <button type="submit">Rellenar</button>
+    <button type="submit">Editar</button>
   </form>
 </div>
+
+
+<h2>Borrar Pelicula</h2>
+<div id="movie-add">
+  <form action="/movie/add" method="post">
+    <label>netflixid:</label>
+    <input type="text" name="netflixid">
+    <button type="submit">Editar</button>
+  </form>
+</div>
+
+
 <h2>Edit Delete Movie</h2>
 <div id="movie-edit">
   {{!-- solo pasar de 20 en 20 las peliculas--}}

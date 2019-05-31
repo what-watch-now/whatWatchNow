@@ -46,4 +46,5 @@ router.get('/detail', (req, res, next) => {
 })
 
 
+
 module.exports = router;

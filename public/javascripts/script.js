@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let viewPressed = false
 
 
-
   const paintHeart = (isAdded) => {
     if (isAdded) {
       favouriteImg.setAttribute('class', 'shown')
@@ -58,9 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
   paintView(viewAdded)
 
 
-
-
-
   // Corazon pulsado
   addToFavList.onclick = (e) => {
     e.preventDefault()
@@ -68,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
     axios.get(`/update-favouriteList?movieID=${movieID}`)
       .then(response => paintHeart(response.data.favourite))
   }
-
 
 
   // Poo pulsado
@@ -79,8 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(response => paintPoo(response.data.black))
   }
 
-
-
   // Ojo pulsado
   addToViewList.onclick = (e) => {
     e.preventDefault()
@@ -88,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
     axios.get(`/update-viewList?movieID=${movieID}`)
       .then(response => paintView(response.data.view))
   }
-
 
 }, false);
 
