@@ -93,12 +93,12 @@ function checkRoles(user) {
 }
 
 
-hbs.registerHelper('if_eq', function(a, b, opts) {
-    if (a == b) {
-        return opts.fn(this);
-    } else {
-        return opts.inverse(this);
-    }
+hbs.registerHelper('if_eq', function (a, b, opts) {
+  if (a == b) {
+    return opts.fn(this);
+  } else {
+    return opts.inverse(this);
+  }
 })
 
 
@@ -123,6 +123,9 @@ app.use("/", movies);
 
 const profiles = require("./routes/profiles.routes")
 app.use("/", profiles)
+
+const api = require("./routes/api.routes")
+app.use("/admin", api)
 
 
 module.exports = app;

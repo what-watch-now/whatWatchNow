@@ -6,7 +6,7 @@
       <p><label>Title: </label><input type="text" name="title"></p>
       <p><label>Image: </label><input type="text" name="image"></p>
       <p><label>Synopsis: </label><input type="text" name="synopsis"></p>
-      <p><label>Rating: </label><input type="text" name="rating"></p>
+      {{!-- <p><label>Rating: </label><input type="text" name="rating"></p> --}}
       <p><label>Type: </label><input type="text" name="type"></p>
       <p><label>Released: </label><input type="text" name="released"></p>
       <p><label>Larg image: </label><input type="text" name="largimage"></p>
@@ -16,6 +16,7 @@
       <p><label>imdbrating: </label><input type="text" name="imdbrating"></p>
       <div class="admin-button">
         <button type="submit">Add</button>
+        <button type="submit">Fill</button>
         <button type="reset">Clear</button>
       </div>
     </form>
@@ -31,11 +32,11 @@
 <a href="??">Delete</a>
 {{/each}} --}}
 
-{{!-- <h2>Borrar Pelicula</h2>
+<h2>Borrar Pelicula</h2>
 <div id="movie-add">
   <form action="/movie/add" method="post">
     <label>netflixid:</label>
     <input type="text" name="netflixid">
     <button type="submit">Editar</button>
   </form>
-</div> --}}
+</div>
