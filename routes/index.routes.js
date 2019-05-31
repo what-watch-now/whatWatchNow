@@ -4,9 +4,9 @@ const Movie = require("../models/Movie.model");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  const rand = Math.floor(Math.random() * 4);
+  const rand = Math.floor(Math.random() * 2412);
   Movie.find()
-    .limit(3)
+    .limit(18)
     .skip(rand)
 
     .then(randomMovies => {

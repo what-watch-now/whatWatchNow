@@ -6,7 +6,8 @@ body {
   background: linear-gradient(to right top, #2e2e2e, #292929, #232323, #1e1e1e, #191919, #181818, #171717, #161616, #191919, #1c1c1c, #202020, #232323);
   color: white;
   background-repeat: no-repeat;
-  height: 100vh; }
+  min-height: 100vh;
+  background-size: cover; }
 
 .nav-bar {
   display: flex;
@@ -53,17 +54,17 @@ footer {
   -webkit-padding-end: 20px;
   -webkit-padding-start: 2px;
   user-select: none;
+  height: 1.9em;
+  width: 26em;
   background-position: 97% center;
   background-repeat: no-repeat;
   border: 1px solid #aaa;
   color: white;
-  font-size: 3em;
-  height: 1.4em;
+  font-size: 1.7em;
   overflow: hidden;
-  padding: 5px 10px;
+  padding: 0 25px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 20em;
   margin: 0 auto;
   font-family: "Montserrat", sans-serif;
   font-weight: 300; }
@@ -74,7 +75,7 @@ footer {
   color: black; }
 
 .index-select button {
-  background-image: linear-gradient(to bottom, rgba(255, 190, 6, 0), #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
+  background-image: linear-gradient(to bottom, #ffbe06, #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   color: white;
@@ -85,7 +86,7 @@ footer {
   border-radius: 5px; }
 
 .index-title h1 {
-  background-image: linear-gradient(to bottom, rgba(255, 190, 6, 0), #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
+  background-image: linear-gradient(to bottom, #ffbe06, #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
   font-size: 5em;
@@ -105,7 +106,7 @@ footer {
   text-align: center;
   margin-top: -60px; }
   .second-header h2 {
-    background-image: linear-gradient(to bottom, rgba(255, 190, 6, 0), #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
+    background-image: linear-gradient(to bottom, #ffbe06, #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
     font-family: "Montserrat", sans-serif;
     font-weight: 300;
     font-size: 2.5em;
@@ -176,7 +177,7 @@ footer {
   color: black; }
 
 .list-select button {
-  background-image: linear-gradient(to bottom, rgba(255, 190, 6, 0), #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
+  background-image: linear-gradient(to bottom, #ffbe06, #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   color: white;
@@ -190,18 +191,9 @@ footer {
   .detail-page a {
     text-decoration: none;
     color: white; }
-    .detail-page a .button {
-      margin-left: 13px;
-      width: 38px;
-      background-image: linear-gradient(to bottom, rgba(255, 190, 6, 0), #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
-      font-family: "Montserrat", sans-serif;
-      font-weight: 300;
-      color: white;
-      font-size: 1em;
-      padding: 0.25em 1em;
-      margin-top: 10px;
-      border: 1px;
-      border-radius: 5px; }
+    .detail-page a .button img {
+      height: 2em;
+      margin-left: 40px; }
     .detail-page a:hover {
       text-decoration: none; }
   .detail-page .detail-movie {
@@ -258,7 +250,7 @@ footer {
   .signup button {
     width: 100%;
     padding: 12px 0px;
-    background-image: linear-gradient(to bottom, rgba(255, 190, 6, 0), #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
+    background-image: linear-gradient(to bottom, #ffbe06, #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
     border: 1px;
     border-radius: 5px; }
   .signup a {
@@ -285,18 +277,10 @@ footer {
   .user a:hover {
     text-decoration: none; }
 
-.user .button {
-  margin-left: 13px;
-  width: 38px;
-  background-image: linear-gradient(to bottom, rgba(255, 190, 6, 0), #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
-  font-family: "Montserrat", sans-serif;
-  font-weight: 300;
-  color: white;
-  font-size: 1em;
-  padding: 0.25em 1em;
-  margin-top: 10px;
-  border: 1px;
-  border-radius: 5px; }
+.user .button img {
+  height: 2em;
+  margin-left: 34px;
+  margin-top: 10px; }
 
 .user .user-img img {
   margin-left: 3em;
@@ -304,7 +288,8 @@ footer {
   height: 150px; }
 
 .user .user-svg img {
-  width: 6em; }
+  width: 5.5em;
+  margin-left: 10px; }
 
 .user h2 {
   margin-left: 6em; }
@@ -331,14 +316,14 @@ footer {
     .admin-add form button {
       margin-left: 40px;
       padding: 12px 30px;
-      background-image: linear-gradient(to bottom, rgba(255, 190, 6, 0), #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
+      background-image: linear-gradient(to bottom, #ffbe06, #ffad00, #ff9c00, #ff8a00, #ff7800, #ff6e00, #ff6301, #ff5704, #ff5203, #ff4d01, #ff4801, #ff4200);
       border: 1px;
       border-radius: 5px; }
 
 footer {
   background-color: black;
   color: white;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%; }
 

@@ -66,7 +66,8 @@ body {
   background: $greyGradient;
   color: white;
   background-repeat: no-repeat;
-  height: 100vh;
+  min-height: 100vh;
+  background-size: cover;
 }
 // -------Header with navbar starts here--------//
 .nav-bar {
@@ -123,18 +124,18 @@ footer {
   -webkit-padding-end: 20px;
   -webkit-padding-start: 2px;
   user-select: none;
-
+  height: 1.9em;
+  width: 26em;
   background-position: 97% center;
   background-repeat: no-repeat;
   border: 1px solid #aaa;
   color: rgb(255, 255, 255);
-  font-size: 3em;
-  height: 1.4em;
+  font-size: 1.7em;
+
   overflow: hidden;
-  padding: 5px 10px;
+  padding: 0 25px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 20em;
 
   margin: 0 auto;
   font-family: "Montserrat", sans-serif;
@@ -280,17 +281,10 @@ footer {
     text-decoration: none;
     color: white;
     .button {
-      margin-left: 13px;
-      width: 38px;
-      background-image: $orangeGradient;
-      font-family: "Montserrat", sans-serif;
-      font-weight: 300;
-      color: white;
-      font-size: 1em;
-      padding: 0.25em 1em;
-      margin-top: 10px;
-      border: 1px;
-      border-radius: 5px;
+      img {
+        height: 2em;
+        margin-left: 40px;
+      }
     }
     &:hover {
       text-decoration: none;
@@ -408,17 +402,11 @@ footer {
     }
   }
   .button {
-    margin-left: 13px;
-    width: 38px;
-    background-image: $orangeGradient;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 300;
-    color: white;
-    font-size: 1em;
-    padding: 0.25em 1em;
-    margin-top: 10px;
-    border: 1px;
-    border-radius: 5px;
+    img {
+      height: 2em;
+      margin-left: 34px;
+      margin-top: 10px;
+    }
   }
   .user-img img {
     margin-left: 3em;
@@ -426,7 +414,8 @@ footer {
     height: 150px;
   }
   .user-svg img {
-    width: 6em;
+    width: 5.5em;
+    margin-left: 10px;
   }
   h2 {
     margin-left: 6em;
@@ -469,7 +458,7 @@ footer {
 footer {
   background-color: black;
   color: white;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
 }
