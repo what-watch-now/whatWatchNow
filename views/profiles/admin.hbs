@@ -1,15 +1,15 @@
 <div class="admin-add">
   <h2>Add Movie</h2>
   <div class="admin-movie-add">
-    <form action="/movie/add" method="post">
+    <form action="/edit" method="post">
       <p><label>Netflix id: </label><input type="text" name="netflixid"></p>
       <p><label>Title: </label><input type="text" name="title"></p>
       <p><label>Image: </label><input type="text" name="image"></p>
       <p><label>Synopsis: </label><input type="text" name="synopsis"></p>
-      {{!-- <p><label>Rating: </label><input type="text" name="rating"></p> --}}
+      <p><label>Genre: </label><input type="text" name="genre"></p>
       <p><label>Type: </label><input type="text" name="type"></p>
       <p><label>Released: </label><input type="text" name="released"></p>
-      <p><label>Larg image: </label><input type="text" name="largimage"></p>
+      <p><label>Larg image: </label><input type="text" name="largeimage"></p>
       <p><label>Unogs Date: </label><input type="text" name="unogsdate"></p>
       <p><label>Imdbid: </label><input type="text" name="imdbid"></p>
       <p><label>Download: </label><input type="text" name="download"></p>
@@ -17,7 +17,7 @@
       <div class="admin-button">
         <button type="submit">Add</button>
         <button type="submit">Fill</button>
-        <button type="reset">Clear</button>
+        <button type="submit">Edit</button>
       </div>
     </form>
   </div>
@@ -33,10 +33,10 @@
 {{/each}} --}}
 
 <h2>Borrar Pelicula</h2>
-<div id="movie-add">
+<div id="clear-movie">
   <form action="/movie/add" method="post">
     <label>netflixid:</label>
     <input type="text" name="netflixid">
-    <button type="submit">Editar</button>
+    <button type="submit">Clear</button>
   </form>
 </div>

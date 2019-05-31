@@ -45,4 +45,25 @@ router.get("/detail", (req, res, next) => {
 
 
 
+// Update 
+router.post("/edit", (req, res, next) => {
+
+  console.log('-----------------------------------------')
+  const { netflixid, title, image, synopsis, genre, type, released, largeimage, unogsdate, imdbid, download, imdbrating } = req.body
+  console.log(download)
+
+  Movie.findOneAndUpdate({ netflixid: req.query.netflix_id },
+    // { $set: { netflixid: req.query.netflix_id, title: req.query.title, image: req.query.image, synopsis: req.query.synopsis, genre: req.query.genre, type: req.query.type, released: req.query.released, largimage: req.query.largimage, unogsdate: req.query.unogsdate, imdbid: req.query.imdbid, download: req.query.download, imdbrating: req.query.imdbrating } },
+    { $set: { netflixid, title, image, synopsis, genre, type, released, largeimage, unogsdate, imdbid, download, imdbrating } },
+    { new: true })
+    .then(movieUpdated => {
+      console.log(req.query.netflix_id)
+      res.redirect(`/detail?netflix_id=${netflixid}`)
+    })
+    .catch(error => console.log(error));
+
+})
+
+
+
 module.exports = router;
