@@ -25,18 +25,22 @@
 
 {{!-- <h2>Edit Delete Movie</h2>
 <div id="movie-edit">
-  {{!-- solo pasar de 20 en 20 las peliculas--}}
+  solo pasar de 20 en 20 las peliculas
 {{#each movie}}
 {{movie.title}}
 <a href="??">Edit</a>
 <a href="??">Delete</a>
 {{/each}} --}}
-
-<h2>Borrar Pelicula</h2>
-<div id="clear-movie">
-  <form action="/movie/add" method="post">
-    <label>netflixid:</label>
-    <input type="text" name="netflixid">
-    <button type="submit">Clear</button>
-  </form>
+<div class="admin-delete">
+  <div class="admin-delete-h2">
+    <h2>Borrar Pelicula</h2>
+  </div>
+  <div class="admin-movie-delete">
+    <div id="clear-movie">
+      <form action="/movie/delete" method="post">
+        <p><label>Netflix id: </label><input type="text" name="netflixid"></p>
+        <button type="submit">Clear</button>
+      </form>
+    </div>
+  </div>
 </div>

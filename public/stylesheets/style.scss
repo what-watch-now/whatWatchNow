@@ -106,7 +106,6 @@ body {
 .index-title,
 footer {
   text-align: center;
-  
 }
 //
 //
@@ -456,10 +455,45 @@ footer {
     }
   }
 }
+.admin-delete {
+  margin-bottom: 100px;
+  h2 {
+    font-size: 2.2em;
+    font-weight: 300;
+  }
+  text-align: center;
+
+  form {
+    margin-left: 22em;
+    display: flex;
+    align-items: center;
+  }
+  button,
+  input {
+    margin-left: 20px;
+  }
+  input {
+    padding: 12px 20px;
+    margin: 8px 0 8px 5px;
+    border-radius: 5px;
+  }
+  button {
+    margin-left: 40px;
+    padding: 0 30px;
+    background-image: $orangeGradient;
+    border: 1px;
+    border-radius: 5px;
+    height: 3.333333em;
+  }
+  .admin-movie-delete {
+    display: inline;
+  }
+}
 footer {
   background-color: black;
   color: white;
-  position: fixed;
+  // position: fixed;
+  padding: 10px 0;
   bottom: 0;
   width: 100%;
 }
@@ -495,7 +529,7 @@ footer a {
   border: 1px;
   // border: 1px solid #999;
   // box-shadow: 0 0 4px #000;
-  margin: 50px auto;
+  margin: 50px auto 0 auto;
   border-radius: 5px;
 }
 
