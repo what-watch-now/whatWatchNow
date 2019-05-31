@@ -138,13 +138,13 @@ router.get('/update-viewList', (req, res, next) => {
 
 
 // Movie edit
-router.get('/admin', (req, res, next) => {
+// router.get('/admin', (req, res, next) => {
 
-})
+// })
 
-router.post('/admin/edit', (req, res, next) => {
-  const netflixtId = req.body.netflixid
-  console.log(netflixtId)
-})
+// router.get('/admin/edit', (req, res, next) => {
+//   const netflixtId = req.body.netflixid
+//   console.log(netflixtId)
+// })
 
 module.exports = router;

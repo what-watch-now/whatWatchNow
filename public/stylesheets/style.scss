@@ -456,6 +456,28 @@ footer {
     }
   }
 }
+.admin-delete{
+    button {
+      margin-left: 40px;
+      padding: 12px 30px;
+      background-image: $orangeGradient;
+      border: 1px;
+      border-radius: 5px;
+      margin-bottom: 80px;
+    }
+    form{
+      display: inline;
+    }
+    // .admin-delete-button{
+    //   display: flex;
+    //   flex-direction: column;
+    // }
+    //     input {
+    //   padding: 12px 20px;
+    //   margin: 8px 0 8px 5px;
+    //   border-radius: 5px;
+    // }
+  }
 footer {
   background-color: black;
   color: white;

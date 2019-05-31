@@ -45,19 +45,39 @@ router.get("/detail", (req, res, next) => {
 
 
 
+// Create
+router.post("/add", (req, res, next) => {
+
+  const { netflixid, title, image, synopsis, genre, type, released, largeimage, unogsdate, imdbid, download, imdbrating } = req.body
+  console.log('el titulo es', title)
+
+  // Movie.save({ netflixid: req.query.netflix_id },
+  //   { $set: { netflixid, title, image, synopsis, genre, type, released, largeimage, unogsdate, imdbid, download, imdbrating } },
+  //   { new: true })
+  //   .then(movieUpdated => {
+  //     console.log(req.query.netflix_id)
+  //     res.redirect(`/detail?netflix_id=${netflixid}`)
+  //   })
+  //   .catch(error => console.log(error));
+
+})
+
+
+
 // Update 
 router.post("/edit", (req, res, next) => {
 
   console.log('-----------------------------------------')
   const { netflixid, title, image, synopsis, genre, type, released, largeimage, unogsdate, imdbid, download, imdbrating } = req.body
-  console.log(download)
+  console.log('antes de actualizar', download)
 
-  Movie.findOneAndUpdate({ netflixid: req.query.netflix_id },
+  Movie.findOneAndUpdate({ netflixid: netflixid },
     // { $set: { netflixid: req.query.netflix_id, title: req.query.title, image: req.query.image, synopsis: req.query.synopsis, genre: req.query.genre, type: req.query.type, released: req.query.released, largimage: req.query.largimage, unogsdate: req.query.unogsdate, imdbid: req.query.imdbid, download: req.query.download, imdbrating: req.query.imdbrating } },
     { $set: { netflixid, title, image, synopsis, genre, type, released, largeimage, unogsdate, imdbid, download, imdbrating } },
     { new: true })
     .then(movieUpdated => {
-      console.log(req.query.netflix_id)
+      // console.log(req.query.netflix_id)
+      console.log('despues de actualizar', movieUpdated.download)
       res.redirect(`/detail?netflix_id=${netflixid}`)
     })
     .catch(error => console.log(error));
