@@ -10,7 +10,6 @@ router.get("/", (req, res, next) => {
     .skip(rand)
 
     .then(randomMovies => {
-      console.log(randomMovies);
       res.render("index", { randomMovies });
     });
 });
