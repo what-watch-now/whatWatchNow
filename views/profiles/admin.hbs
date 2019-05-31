@@ -1,50 +1,24 @@
 {{user.username}}
-<h2>user list</h2>
-<div id="user-list">
-  {{#each user}}
-  {{user._id}}
-  {{user.username}}
-  <a href="??">Edit</a>
-  <a href="??">Delete</a>
-  {{/each}}
-</div>
-<h2>Add Movie</h2>
-<div id="movie-add">
-  <form action="/movie/add" method="post">
-    <label>netflixid:</label>
-    <input type="text" name="netflixid">
-    <label>Title:</label>
-    <input type="text" name="title">
-    <label>Image:</label>
-    <input type="text" name="image">
-    <label>Synopsis:</label>
-    <input type="text" name="synopsis">
-    <label>Rating:</label>
-    <input type="text" name="rating">
-    <label>Type:</label>
-    <input type="text" name="type">
-    <label>Released:</label>
-    <input type="text" name="released">
-    <label>Larg image:</label>
-    <input type="text" name="largimage">
-    <label>unogsdate:</label>
-    <input type="text" name="unogsdate">
-    <label>imdbid:</label>
-    <input type="text" name="imdbid">
-    <label>download:</label>
-    <input type="text" name="download">
-    <label>imdbrating:</label>
-    <input type="text" name="imdbrating">
-    <button type="submit">Add</button>
-    <button type="reset">Clear</button>
-  </form>
-</div>
-<h2>Edit Delete Movie</h2>
-<div id="movie-edit">
-  {{!-- solo pasar de 20 en 20 las peliculas--}}
-  {{#each movie}}
-  {{movie.title}}
-  <a href="??">Edit</a>
-  <a href="??">Delete</a>
-  {{/each}}
+<div class="admin-add">
+  <h2>Add Movie</h2>
+  <div class="admin-movie-add">
+    <form action="/movie/add" method="post">
+      <p><label>Netflix id: </label><input type="text" name="netflixid"></p>
+      <p><label>Title: </label><input type="text" name="title"></p>
+      <p><label>Image: </label><input type="text" name="image"></p>
+      <p><label>Synopsis: </label><input type="text" name="synopsis"></p>
+      <p><label>Rating: </label><input type="text" name="rating"></p>
+      <p><label>Type: </label><input type="text" name="type"></p>
+      <p><label>Released: </label><input type="text" name="released"></p>
+      <p><label>Larg image: </label><input type="text" name="largimage"></p>
+      <p><label>Unogs Date: </label><input type="text" name="unogsdate"></p>
+      <p><label>Imdbid: </label><input type="text" name="imdbid"></p>
+      <p><label>Download: </label><input type="text" name="download"></p>
+      <p><label>imdbrating: </label><input type="text" name="imdbrating"></p>
+      <div class="admin-button">
+        <button type="submit">Add</button>
+        <button type="reset">Clear</button>
+      </div>
+    </form>
+  </div>
 </div>
